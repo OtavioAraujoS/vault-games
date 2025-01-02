@@ -1,0 +1,20 @@
+.login {
+  background-image: url('/loginWallpaper.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.title {
+  font-size: 4rem;
+  font-weight: 700;
+  color: #fff;
+  font-family: 'Bebas Neue', serif;
+  letter-spacing: 0.02em;
+}
