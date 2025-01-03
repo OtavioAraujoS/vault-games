@@ -33,6 +33,6 @@ export const Dashboard = () => {
       </div>
     </div>
   ) : (
-    <NotAllowedPage onClick={() => navigate('/')} />
+    <NotAllowedPage />
   );
 };
