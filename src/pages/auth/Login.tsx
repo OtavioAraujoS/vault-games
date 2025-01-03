@@ -1,5 +1,6 @@
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
+import { Input } from '@/components/ui/input';
 import { UsersInfo } from '@/types/User';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useContext, useState } from 'react';
@@ -61,7 +62,7 @@ export const Login = () => {
             <label className="text-black text-[0.9rem] md:text-[1rem] lg:text-[1.2rem] font-bold font-sans">
               Usuário
             </label>
-            <input
+            <Input
               placeholder="Usuário"
               className="mb-4 p-2 border rounded w-full"
               {...register('nome')}
@@ -79,7 +80,7 @@ export const Login = () => {
             <label className="text-black text-[0.9rem] md:text-[1rem] lg:text-[1.2rem] font-bold font-sans">
               Senha
             </label>
-            <input
+            <Input
               type="password"
               placeholder="Senha"
               className="mb-4 p-2 border rounded w-full"
