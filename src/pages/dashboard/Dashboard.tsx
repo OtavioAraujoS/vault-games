@@ -1,3 +1,4 @@
+import { NotAllowedPage } from '@/components/NotAllowedPage';
 import { useContext } from 'react';
 import { useNavigate } from 'react-router';
 import { AuthContext } from '../../context/AuthContext';
@@ -17,7 +18,7 @@ export const Dashboard = () => {
     navigate('/');
   };
 
-  return (
+  return user ? (
     <div style={{ padding: '20px' }}>
       <h1>Dashboard</h1>
       <p>Bem-vindo ao painel de controle!</p>
@@ -31,5 +32,7 @@ export const Dashboard = () => {
         </ul>
       </div>
     </div>
+  ) : (
+    <NotAllowedPage onClick={() => navigate('/')} />
   );
 };
