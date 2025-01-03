@@ -8,7 +8,7 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 1rem;
 }
 
 .title {
@@ -16,5 +16,14 @@
   font-weight: 700;
   color: #fff;
   font-family: 'Bebas Neue', serif;
+  letter-spacing: 0.03em;
+}
+
+.subtitle {
+  font-size: 3rem;
+  font-weight: 500;
+  color: #000000;
+  font-family: 'Bebas Neue', serif;
   letter-spacing: 0.02em;
+  margin-bottom: 2rem;
 }
