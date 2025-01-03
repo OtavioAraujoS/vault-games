@@ -6,6 +6,7 @@ import './index.css';
 export const Login = () => {
   const authContext = useContext(AuthContext);
   const [userInfos, setUserInfos] = useState({ userName: '', password: '' });
+  const [isLogin, setIsLogin] = useState<boolean>(true);
   const navigate = useNavigate();
 
   if (!authContext) {
@@ -15,6 +16,10 @@ export const Login = () => {
   const { login } = authContext;
 
   const handleLogin = () => {
+    if (!userInfos.userName || !userInfos.password) {
+      return alert('Preencha todos os campos');
+    }
+
     const userData = { id: '1', name: userInfos.userName };
     login(userData);
     navigate('/dashboard');
@@ -22,10 +27,11 @@ export const Login = () => {
 
   return (
     <div className="login">
-      <div className="flex flex-col items-center justify-center p-8 rounded shadow-md min-h-[30rem] gap-7">
-        <h1 className="title">Vault Games</h1>
-        <div>
-          <label className="text-white text-[1.2rem] font-bold font-sans">
+      <h1 className="title">Vault Games</h1>
+      <div className="bg-[#FFF] flex flex-col items-center justify-center p-10 rounded shadow-md min-h-[35rem] min-w-[35rem] gap-5">
+        <h1 className="subtitle">{isLogin ? 'Login' : 'Registrar'}</h1>
+        <div className="flex flex-col gap-1 w-full">
+          <label className="text-black text-[1.2rem] font-bold font-sans">
             Usuário
           </label>
           <input
@@ -37,8 +43,10 @@ export const Login = () => {
             }
             className="mb-4 p-2 border rounded w-full"
           />
+        </div>
 
-          <label className="text-white text-[1.2rem] font-bold font-sans">
+        <div className="flex flex-col gap-1 w-full">
+          <label className="text-black text-[1.2rem] font-bold font-sans">
             Senha
           </label>
           <input
@@ -51,12 +59,24 @@ export const Login = () => {
             className="mb-4 p-2 border rounded w-full"
           />
         </div>
-        <button
-          onClick={handleLogin}
-          className="bg-blue-700 text-white p-2 rounded w-full"
-        >
-          Login
-        </button>
+
+        <div className="w-full text-center">
+          <button
+            onClick={handleLogin}
+            className="bg-blue-700 text-white p-2 rounded w-full"
+          >
+            {isLogin ? 'Entrar' : 'Registrar'}
+          </button>
+          <p className="mt-4">
+            Não tem uma conta?{' '}
+            <span
+              className="text-blue-700 cursor-pointer"
+              onClick={() => setIsLogin(!isLogin)}
+            >
+              Registrar
+            </span>
+          </p>
+        </div>
       </div>
     </div>
   );
