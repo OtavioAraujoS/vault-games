@@ -1,9 +1,13 @@
+import { Button } from '@/components/ui/button';
+import { UsersInfo } from '@/types/User';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useContext, useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router';
 import { z } from 'zod';
 import { AuthContext } from '../../context/AuthContext';
+import { userService } from '../../services/user';
+import { mapError } from '../../utils/ErrosMap';
 import { loginSchemma } from './formSchemma';
 import './index.css';
 
@@ -24,16 +28,26 @@ export const Login = () => {
     return <div>Loading...</div>;
   }
 
-  // const { login } = authContext;
+  const { login } = authContext;
 
-  const handleLogin: SubmitHandler<z.infer<typeof loginSchemma>> = (
+  const handleLogin: SubmitHandler<z.infer<typeof loginSchemma>> = async (
     data: z.infer<typeof loginSchemma>
   ) => {
-    setLoading(true);
-    console.log(data);
-    // login({ : data.username, password: data.password });
-    navigate('/dashboard');
-    setLoading(false);
+    try {
+      setLoading(true);
+      const response: UsersInfo = isLogin
+        ? await userService.login(data)
+        : await userService.register(data);
+
+      login({ name: response.nome, id: response._id });
+
+      navigate('/dashboard');
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    } catch (error: any) {
+      console.log(mapError(error.message));
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -49,12 +63,12 @@ export const Login = () => {
             <input
               placeholder="Usuário"
               className="mb-4 p-2 border rounded w-full"
-              {...register('username')}
+              {...register('nome')}
             />
             <p className="text-red-500 text-[0.8rem]">
-              {errors.username?.message && (
+              {errors.nome?.message && (
                 <span className="text-red-600 text-[0.8rem]">
-                  {errors.username.message}
+                  {errors.nome.message}
                 </span>
               )}
             </p>
@@ -80,13 +94,13 @@ export const Login = () => {
           </div>
 
           <div className="w-full text-center">
-            <button
+            <Button
               type="submit"
-              className="bg-blue-700 text-white p-2 rounded w-full"
+              className="bg-blue-700 text-white p-2 rounded w-full hover:bg-blue-800"
               disabled={loading}
             >
-              {isLogin ? 'Entrar' : 'Registrar'}
-            </button>
+              {loading ? 'Carregando' : isLogin ? 'Entrar' : 'Registrar'}
+            </Button>
             <p className="mt-4">
               Não tem uma conta?{' '}
               <span
