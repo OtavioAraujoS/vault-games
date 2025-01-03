@@ -1,4 +1,4 @@
-import { UsersInfo } from '../types/User';
+import { UserLogin, UsersInfo } from '../types/User';
 import { api as apiService, ApiService, defaultUrl } from './api';
 
 class UserService {
@@ -7,6 +7,12 @@ class UserService {
   public getAllUsers = async (): Promise<UsersInfo[]> => {
     const response = await this.api.get(`${defaultUrl}/user/all`);
     return response as UsersInfo[];
+  };
+
+  public login = async (data: UserLogin) => {
+    return this.api.post(`${defaultUrl}/login`, {
+      ...data,
+    });
   };
 }
 export const userService = new UserService(apiService);
