@@ -13,3 +13,11 @@ export interface AuthContextType {
   login: (userData: User) => void;
   logout: () => void;
 }
+
+export interface UsersInfo {
+  id: string;
+  name: string;
+  password: string;
+  createdAt: string;
+  __v: number;
+}
