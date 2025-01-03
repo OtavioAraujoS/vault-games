@@ -4,7 +4,7 @@ export interface User {
 }
 
 export interface UserLogin {
-  username: string;
+  nome: string;
   password: string;
 }
 
@@ -15,8 +15,8 @@ export interface AuthContextType {
 }
 
 export interface UsersInfo {
-  id: string;
-  name: string;
+  _id: string;
+  nome: string;
   password: string;
   createdAt: string;
   __v: number;
