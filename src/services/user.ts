@@ -10,13 +10,13 @@ class UserService {
   };
 
   public login = async (data: UserLogin) => {
-    return this.api.post(`${defaultUrl}/login`, {
+    return this.api.post(`${defaultUrl}/user/login`, {
       ...data,
     });
   };
 
   public register = async (data: UserLogin) => {
-    return this.api.post(`${defaultUrl}/create`, {
+    return this.api.post(`${defaultUrl}/user/create`, {
       ...data,
     });
   };
