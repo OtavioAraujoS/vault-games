@@ -1,4 +1,5 @@
 import { Button } from '@/components/ui/button';
+import { Card } from '@/components/ui/card';
 import { UsersInfo } from '@/types/User';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useContext, useState } from 'react';
@@ -54,10 +55,10 @@ export const Login = () => {
     <form onSubmit={handleSubmit(handleLogin)}>
       <div className="login">
         <h1 className="title">Vault Games</h1>
-        <div className="bg-[#FFF] flex flex-col items-center justify-center p-10 rounded shadow-md min-h-[35rem] min-w-[35rem] gap-3">
+        <Card className="flex flex-col items-center justify-center p-10 md:min-h-[30rem] lg:min-h-[35rem] min-w-full sm:min-w-[20rem] md:min-w-[25rem] lg:min-w-[30rem] xl:min-w-[35rem] gap-3">
           <h1 className="subtitle">{isLogin ? 'Login' : 'Registrar'}</h1>
           <div className="flex flex-col gap-1 w-full">
-            <label className="text-black text-[1.2rem] font-bold font-sans">
+            <label className="text-black text-[0.9rem] md:text-[1rem] lg:text-[1.2rem] font-bold font-sans">
               Usuário
             </label>
             <input
@@ -75,7 +76,7 @@ export const Login = () => {
           </div>
 
           <div className="flex flex-col gap-1 w-full">
-            <label className="text-black text-[1.2rem] font-bold font-sans">
+            <label className="text-black text-[0.9rem] md:text-[1rem] lg:text-[1.2rem] font-bold font-sans">
               Senha
             </label>
             <input
@@ -101,7 +102,7 @@ export const Login = () => {
             >
               {loading ? 'Carregando' : isLogin ? 'Entrar' : 'Registrar'}
             </Button>
-            <p className="mt-4">
+            <p className="mt-4 text-[0.8rem] md:text-[0.9rem] lg:text-[1rem]">
               Não tem uma conta?{' '}
               <span
                 className="text-blue-700 cursor-pointer"
@@ -111,7 +112,7 @@ export const Login = () => {
               </span>
             </p>
           </div>
-        </div>
+        </Card>
       </div>
     </form>
   );
