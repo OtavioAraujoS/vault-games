@@ -40,7 +40,7 @@ export const Login = () => {
     <form onSubmit={handleSubmit(handleLogin)}>
       <div className="login">
         <h1 className="title">Vault Games</h1>
-        <div className="bg-[#FFF] flex flex-col items-center justify-center p-10 rounded shadow-md min-h-[35rem] min-w-[35rem] gap-5">
+        <div className="bg-[#FFF] flex flex-col items-center justify-center p-10 rounded shadow-md min-h-[35rem] min-w-[35rem] gap-3">
           <h1 className="subtitle">{isLogin ? 'Login' : 'Registrar'}</h1>
           <div className="flex flex-col gap-1 w-full">
             <label className="text-black text-[1.2rem] font-bold font-sans">
