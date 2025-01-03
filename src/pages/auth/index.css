@@ -9,6 +9,11 @@
   align-items: center;
   flex-direction: column;
   gap: 1rem;
+
+  @media (max-width: 640px) {
+    padding: 0 1rem;
+    text-wrap: wrap;
+  }
 }
 
 .title {
@@ -17,6 +22,15 @@
   color: #fff;
   font-family: 'Bebas Neue', serif;
   letter-spacing: 0.03em;
+
+  @media (max-width: 768px) {
+    font-size: 3rem;
+    text-align: center;
+  }
+
+  @media (max-width: 640px) {
+    font-size: 2rem;
+  }
 }
 
 .subtitle {
@@ -25,4 +39,12 @@
   color: #000000;
   font-family: 'Bebas Neue', serif;
   letter-spacing: 0.02em;
+
+  @media (max-width: 768px) {
+    font-size: 2rem;
+  }
+
+  @media (max-width: 640px) {
+    font-size: 1.5rem;
+  }
 }
