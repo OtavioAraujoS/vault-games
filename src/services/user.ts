@@ -9,16 +9,18 @@ class UserService {
     return response as UsersInfo[];
   };
 
-  public login = async (data: UserLogin) => {
-    return this.api.post(`${defaultUrl}/user/login`, {
+  public login = async (data: UserLogin): Promise<UsersInfo> => {
+    const response = await this.api.post(`${defaultUrl}/user/login`, {
       ...data,
     });
+    return response as UsersInfo;
   };
 
-  public register = async (data: UserLogin) => {
-    return this.api.post(`${defaultUrl}/user/create`, {
+  public register = async (data: UserLogin): Promise<UsersInfo> => {
+    const response = await this.api.post(`${defaultUrl}/user/create`, {
       ...data,
     });
+    return response as UsersInfo;
   };
 }
 export const userService = new UserService(apiService);
