@@ -14,5 +14,11 @@ class UserService {
       ...data,
     });
   };
+
+  public register = async (data: UserLogin) => {
+    return this.api.post(`${defaultUrl}/create`, {
+      ...data,
+    });
+  };
 }
 export const userService = new UserService(apiService);
