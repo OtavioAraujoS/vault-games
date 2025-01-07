@@ -57,9 +57,11 @@ export const Login = () => {
       <div className="login">
         <h1 className="title">Vault Games</h1>
         <Card className="flex flex-col items-center justify-center p-10 md:min-h-[30rem] lg:min-h-[35rem] min-w-full sm:min-w-[20rem] md:min-w-[25rem] lg:min-w-[30rem] xl:min-w-[35rem] gap-3">
-          <h1 className="subtitle">{isLogin ? 'Login' : 'Registrar'}</h1>
+          <h1 className="text-[1.5rem] md:text-[2rem] lg:text-[3rem] font-medium text-black font-bebas tracking-wide mb-4 dark:text-white">
+            {isLogin ? 'Login' : 'Registrar'}
+          </h1>
           <div className="flex flex-col gap-1 w-full">
-            <label className="text-black text-[0.9rem] md:text-[1rem] lg:text-[1.2rem] font-bold font-sans">
+            <label className="text-black text-[0.9rem] md:text-[1rem] lg:text-[1.2rem] font-bold font-sans dark:text-white">
               Usuário
             </label>
             <Input
@@ -77,7 +79,7 @@ export const Login = () => {
           </div>
 
           <div className="flex flex-col gap-1 w-full">
-            <label className="text-black text-[0.9rem] md:text-[1rem] lg:text-[1.2rem] font-bold font-sans">
+            <label className="text-black text-[0.9rem] md:text-[1rem] lg:text-[1.2rem] font-bold font-sans dark:text-white">
               Senha
             </label>
             <Input
