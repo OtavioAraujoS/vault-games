@@ -5,7 +5,7 @@ import React from 'react';
 import { Outlet } from 'react-router-dom';
 import { Sidebar } from './Sidebar';
 
-const Header: React.FC = () => {
+const Layout: React.FC = () => {
   return (
     <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
       <SidebarProvider>
@@ -46,4 +46,4 @@ const Header: React.FC = () => {
   );
 };
 
-export default Header;
+export default Layout;
