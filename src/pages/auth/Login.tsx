@@ -56,7 +56,7 @@ export const Login = () => {
     <form onSubmit={handleSubmit(handleLogin)}>
       <div className="login">
         <h1 className="title">Vault Games</h1>
-        <Card className="flex flex-col items-center justify-center p-10 md:min-h-[30rem] lg:min-h-[35rem] min-w-full sm:min-w-[20rem] md:min-w-[25rem] lg:min-w-[30rem] xl:min-w-[35rem] gap-3">
+        <Card className="flex flex-col items-center justify-center p-10 gap-3 md:min-h-[30rem] lg:min-h-[35rem] min-w-full sm:min-w-[20rem] md:min-w-[25rem] lg:min-w-[30rem] xl:min-w-[35rem] dark:bg-gray-800">
           <h1 className="text-[1.5rem] md:text-[2rem] lg:text-[3rem] font-medium text-black font-bebas tracking-wide mb-4 dark:text-white">
             {isLogin ? 'Login' : 'Registrar'}
           </h1>
@@ -66,7 +66,7 @@ export const Login = () => {
             </label>
             <Input
               placeholder="Usuário"
-              className="mb-4 p-2 border rounded w-full"
+              className="mb-4 p-2 border dark:border-white rounded w-full"
               {...register('nome')}
             />
             <p className="text-red-500 text-[0.8rem]">
@@ -85,7 +85,7 @@ export const Login = () => {
             <Input
               type="password"
               placeholder="Senha"
-              className="mb-4 p-2 border rounded w-full"
+              className="mb-4 p-2 border dark:border-white rounded w-full"
               {...register('password')}
             />
             <p className="text-red-500 text-[0.8rem]">
@@ -105,16 +105,29 @@ export const Login = () => {
             >
               {loading ? 'Carregando' : isLogin ? 'Entrar' : 'Registrar'}
             </Button>
+          </div>
+
+          {isLogin ? (
             <p className="mt-4 text-[0.8rem] md:text-[0.9rem] lg:text-[1rem]">
               Não tem uma conta?{' '}
               <span
-                className="text-blue-700 cursor-pointer"
+                className="text-blue-700 dark:text-blue-500 cursor-pointer"
                 onClick={() => setIsLogin(!isLogin)}
               >
                 Registrar
               </span>
             </p>
-          </div>
+          ) : (
+            <p className="mt-4 text-[0.8rem] md:text-[0.9rem] lg:text-[1rem]">
+              Já tem uma conta?{' '}
+              <span
+                className="text-blue-700 dark:text-blue-500 cursor-pointer"
+                onClick={() => setIsLogin(!isLogin)}
+              >
+                Login
+              </span>
+            </p>
+          )}
         </Card>
       </div>
     </form>
