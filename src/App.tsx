@@ -1,5 +1,6 @@
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import { NotAllowedPage } from './components/NotAllowedPage';
+import Header from './layouts/Dashboard';
 import { Login } from './pages/auth/Login';
 import { Dashboard } from './pages/dashboard/Dashboard';
 
@@ -8,7 +9,9 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<Login />} />
-        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/dashboard" element={<Header />}>
+          <Route index element={<Dashboard />} />
+        </Route>
         <Route path="*" element={<NotAllowedPage />} />
       </Routes>
     </Router>
