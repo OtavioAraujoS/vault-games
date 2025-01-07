@@ -32,19 +32,3 @@
     font-size: 2rem;
   }
 }
-
-.subtitle {
-  font-size: 3rem;
-  font-weight: 500;
-  color: #000000;
-  font-family: 'Bebas Neue', serif;
-  letter-spacing: 0.02em;
-
-  @media (max-width: 768px) {
-    font-size: 2rem;
-  }
-
-  @media (max-width: 640px) {
-    font-size: 1.5rem;
-  }
-}
