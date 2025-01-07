@@ -1,6 +1,6 @@
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import { NotAllowedPage } from './components/NotAllowedPage';
-import Header from './layouts/Dashboard';
+import Header from './layouts/Header';
 import { Login } from './pages/auth/Login';
 import { Dashboard } from './pages/dashboard/Dashboard';
 
