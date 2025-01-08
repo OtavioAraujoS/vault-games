@@ -2,7 +2,7 @@ import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import { NotAllowedPage } from './components/NotAllowedPage';
 import Layout from './layouts/Layout';
 import { Login } from './pages/auth/Login';
-import Dashboard from './pages/dashboard/Dashboard';
+import { Dashboard } from './pages/dashboard/Dashboard';
 import { Jogos } from './pages/jogos/Jogos';
 
 function App() {
