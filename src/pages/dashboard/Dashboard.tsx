@@ -1,31 +1,25 @@
 import { NotAllowedPage } from '@/components/NotAllowedPage';
-import { useContext } from 'react';
+import { LoginContext } from '@/context/LoginContext';
 import { useNavigate } from 'react-router';
-import { AuthContext } from '../../context/AuthContext';
 
 export const Dashboard = () => {
-  const authContext = useContext(AuthContext);
   const navigate = useNavigate();
-
-  if (!authContext) {
-    return <div>Loading...</div>;
-  }
-
-  const { user, logout } = authContext;
+  const { loginInfos, logout } = LoginContext();
 
   const LogOut = () => {
     logout();
     navigate('/');
   };
 
-  return user ? (
+  return loginInfos ? (
     <div style={{ padding: '20px' }}>
       <h1>Dashboard</h1>
       <p>Bem-vindo ao painel de controle!</p>
       <div style={{ marginTop: '20px' }}>
         <h2>Estatísticas</h2>
         <ul>
-          <li>Usuário: {user?.name}</li>
+          <li>ID: {loginInfos?.id}</li>
+          <li>Usuário: {loginInfos?.name}</li>
           <li>
             <button onClick={LogOut}>LogOut</button>
           </li>
