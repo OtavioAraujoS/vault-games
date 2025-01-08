@@ -3,6 +3,7 @@ import { Gamepad, Home } from 'lucide-react';
 import {
   Sidebar as ShadcnSidebar,
   SidebarContent,
+  SidebarFooter,
   SidebarGroup,
   SidebarGroupContent,
   SidebarGroupLabel,
@@ -38,7 +39,10 @@ export function Sidebar() {
             <SidebarMenu className="flex flex-col gap-1 mt-4">
               {items.map((item) => (
                 <SidebarMenuItem key={item.title}>
-                  <SidebarMenuButton asChild className="w-full h-12">
+                  <SidebarMenuButton
+                    asChild
+                    className="w-full h-12 border-b border-gray-300 dark:border-gray-700"
+                  >
                     <a href={item.url}>
                       <item.icon />
                       <span className="text-[1rem] tracking-wider">
@@ -52,6 +56,28 @@ export function Sidebar() {
           </SidebarGroupContent>
         </SidebarGroup>
       </SidebarContent>
+      <SidebarFooter className="dark:bg-gray-800">
+        <p className="text-[0.9rem] dark:text-[#fff]">
+          &copy; {new Date().getFullYear()} Built by{' '}
+          <a
+            href="https://github.com/otavioaraujo08"
+            target="_blank"
+            rel="noreferrer"
+            className="text-blue-500"
+          >
+            Otávio Araujo.
+          </a>{' '}
+          The source code is available on{' '}
+          <a
+            href="https://github.com/otavioaraujo08/vault-games"
+            target="_blank"
+            rel="noreferrer"
+            className="text-blue-500"
+          >
+            GitHub.
+          </a>
+        </p>
+      </SidebarFooter>
     </ShadcnSidebar>
   );
 }
