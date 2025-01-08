@@ -13,8 +13,8 @@ function App() {
         <Route element={<Layout />}>
           <Route path="dashboard" element={<Dashboard />} />
           <Route path="jogos" element={<Jogos />} />
-          <Route path="*" element={<NotAllowedPage />} />
         </Route>
+        <Route path="*" element={<NotAllowedPage />} />
       </Routes>
     </Router>
   );
