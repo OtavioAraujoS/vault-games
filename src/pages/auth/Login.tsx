@@ -1,13 +1,13 @@
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
+import { LoginContext } from '@/context/LoginContext';
 import { UsersInfo } from '@/types/User';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { useContext, useState } from 'react';
+import { useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router';
 import { z } from 'zod';
-import { AuthContext } from '../../context/AuthContext';
 import { userService } from '../../services/user';
 import { mapError } from '../../utils/ErrosMap';
 import { loginSchemma } from './formSchemma';
@@ -21,16 +21,10 @@ export const Login = () => {
   } = useForm<z.infer<typeof loginSchemma>>({
     resolver: zodResolver(loginSchemma),
   });
-  const authContext = useContext(AuthContext);
+  const { setLoginInfos } = LoginContext();
   const [isLogin, setIsLogin] = useState<boolean>(true);
   const [loading, setLoading] = useState<boolean>(false);
   const navigate = useNavigate();
-
-  if (!authContext) {
-    return <div>Loading...</div>;
-  }
-
-  const { login } = authContext;
 
   const handleLogin: SubmitHandler<z.infer<typeof loginSchemma>> = async (
     data: z.infer<typeof loginSchemma>
@@ -41,7 +35,7 @@ export const Login = () => {
         ? await userService.login(data)
         : await userService.register(data);
 
-      login({ name: response.nome, id: response._id });
+      setLoginInfos({ name: response.nome, id: response._id });
 
       navigate('/dashboard');
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
