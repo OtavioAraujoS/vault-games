@@ -1,9 +1,11 @@
 import { Card } from '@/components/Card';
+import { DataTable } from '@/components/DataTable';
 import { NotAllowedPage } from '@/components/NotAllowedPage';
 import { LoginContext } from '@/context/LoginContext';
 import { gameService } from '@/services/games';
 import { Game } from '@/types/Games';
 import { useEffect, useState } from 'react';
+import { GamesColumns } from './GamesColumns';
 
 export const Jogos = () => {
   const [gamesInfos, setGamesInfos] = useState<Game[] | []>([]);
@@ -23,7 +25,7 @@ export const Jogos = () => {
   }, [loginInfos.id]);
 
   return loginInfos ? (
-    <div className="flex flex-col h-full min-h-[100vh] w-full">
+    <div className="flex flex-col h-full min-h-[100vh] w-full p-4 gap-4">
       <div className="flex flex-wrap gap-4">
         <Card title="Jogos Cadastrados" value={gamesInfos.length || 0} />
         <Card
@@ -54,6 +56,8 @@ export const Jogos = () => {
           }
         />
       </div>
+
+      <DataTable data={gamesInfos} columns={GamesColumns} />
     </div>
   ) : (
     <NotAllowedPage />
