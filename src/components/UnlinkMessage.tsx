@@ -10,7 +10,7 @@ export const UnlinkMessage = ({ title, children }: UnlinkMessageProps) => {
   return (
     <div className="my-4 flex flex-col items-center justify-center gap-2 text-center">
       <CircleAlert color="red" size={100} />
-      <h1 className="text-[1.8rem] tracking-wide md:text-[2rem] lg:text-[2.4rem]">
+      <h1 className="text-[1.8rem] dark:text-white tracking-wide md:text-[2rem] lg:text-[2.4rem]">
         Atenção
       </h1>
       {title ? (
