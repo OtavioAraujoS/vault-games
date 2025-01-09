@@ -12,7 +12,7 @@ interface CardProps {
 
 export const Card = ({ title, value }: CardProps) => {
   return (
-    <ShadcnCard className="dark:bg-[#212121] rounded border border-gray-500 shadow-md w-1/6 min-w-[12rem] m-4">
+    <ShadcnCard className="bg-[#FAFAFA] dark:bg-[#212121] rounded border border-gray-500 shadow-md w-1/6 min-w-[12rem] m-4">
       <CardHeader>
         <CardTitle className="text-[#7E7E7E] font-sans font-semibold tracking-wide text-[1rem] md:text-[1.1rem] lg:text-[1.2rem]">
           {title}
