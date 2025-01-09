@@ -43,7 +43,7 @@ export function Dialog({
           disabled={disabled || false}
           className={
             className ||
-            'dark: mb-4 max-w-[15.2rem] text-[0.8rem] text-white md:text-[1rem] dark:bg-primary/35 dark:hover:bg-primary/50'
+            'mb-4 max-w-[15.2rem] text-[0.8rem] text-white md:text-[1rem] dark:bg-primary/35 dark:hover:bg-primary/50'
           }
         >
           {buttonTitle}
@@ -53,11 +53,12 @@ export function Dialog({
       <DialogContent
         onInteractOutside={(e) => e.preventDefault()}
         className={
-          dialogClassName || 'w-full md:min-w-[50rem] lg:min-w-[70rem]'
+          dialogClassName ||
+          'w-full dark:bg-[#212121] md:min-w-[50rem] lg:min-w-[70rem]'
         }
       >
         <DialogHeader>
-          <DialogTitle className="text-[1rem] md:text-[1.1rem] lg:text-[1.3rem] sm:[0.8rem]">
+          <DialogTitle className="dark:text-white text-[1rem] md:text-[1.1rem] lg:text-[1.3rem] sm:[0.8rem]">
             {title}
           </DialogTitle>
           <DialogDescription className="text-[0.8rem] md:text-[1rem] sm:[0.6rem]">
