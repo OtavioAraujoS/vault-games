@@ -28,7 +28,7 @@ const items = [
 export function Sidebar() {
   return (
     <ShadcnSidebar>
-      <SidebarContent className="h-full dark:bg-gray-800">
+      <SidebarContent className="h-full dark:bg-[#212121]">
         <SidebarGroup>
           <SidebarGroupLabel className="flex justify-center items-center my-3">
             <h1 className="font-bebas dark:text-[#fff] text-center text-[1.3rem] md:text-[1.5rem] lg:text-[1.7rem] tracking-wider">
@@ -56,7 +56,7 @@ export function Sidebar() {
           </SidebarGroupContent>
         </SidebarGroup>
       </SidebarContent>
-      <SidebarFooter className="dark:bg-gray-800">
+      <SidebarFooter className="dark:bg-[#212121]">
         <p className="text-[0.9rem] dark:text-[#fff]">
           &copy; {new Date().getFullYear()} Built by{' '}
           <a
