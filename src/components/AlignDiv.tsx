@@ -6,7 +6,7 @@ interface AlignDivProps {
 
 export const AlignDiv = ({ children }: AlignDivProps) => {
   return (
-    <div className="flex items-center justify-center text-center">
+    <div className="flex items-center justify-center text-center dark:text-white">
       {children}
     </div>
   );
