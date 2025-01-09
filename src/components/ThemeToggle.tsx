@@ -26,11 +26,17 @@ export function ThemeToggle() {
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
-        <DropdownMenuItem onClick={() => setTheme('light')}>
-          Light
+        <DropdownMenuItem
+          onClick={() => setTheme('light')}
+          className="tracking-wider"
+        >
+          Claro
         </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => setTheme('dark')}>
-          Dark
+        <DropdownMenuItem
+          onClick={() => setTheme('dark')}
+          className="tracking-wider"
+        >
+          Escuro
         </DropdownMenuItem>
         <DropdownMenuItem onClick={() => setTheme('system')}>
           System
