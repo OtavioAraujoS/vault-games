@@ -50,7 +50,7 @@ export const Login = () => {
     <form onSubmit={handleSubmit(handleLogin)}>
       <div className="login">
         <h1 className="title">Vault Games</h1>
-        <Card className="flex flex-col items-center justify-center p-10 gap-3 md:min-h-[30rem] lg:min-h-[35rem] min-w-full sm:min-w-[20rem] md:min-w-[25rem] lg:min-w-[30rem] xl:min-w-[35rem] dark:bg-gray-800">
+        <Card className="flex flex-col items-center justify-center p-10 gap-3 md:min-h-[30rem] lg:min-h-[35rem] min-w-full sm:min-w-[20rem] md:min-w-[25rem] lg:min-w-[30rem] xl:min-w-[35rem] dark:bg-[#212121]">
           <h1 className="text-[1.5rem] md:text-[2rem] lg:text-[3rem] font-medium text-black font-bebas tracking-wide mb-4 dark:text-white">
             {isLogin ? 'Login' : 'Registrar'}
           </h1>
