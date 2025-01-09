@@ -6,6 +6,7 @@ import { gameService } from '@/services/games';
 import { Game } from '@/types/Games';
 import { useEffect, useState } from 'react';
 import { GamesColumns } from './GamesColumns';
+import { TitlePage } from '@/components/TitlePage';
 
 export const Jogos = () => {
   const [gamesInfos, setGamesInfos] = useState<Game[] | []>([]);
@@ -57,7 +58,10 @@ export const Jogos = () => {
         />
       </div>
 
-      <DataTable data={gamesInfos} columns={GamesColumns} />
+      <div className="flex flex-col gap-2 w-full">
+        <TitlePage title="Jogos Cadastrados " />
+        <DataTable data={gamesInfos} columns={GamesColumns} />
+      </div>
     </div>
   ) : (
     <NotAllowedPage />
