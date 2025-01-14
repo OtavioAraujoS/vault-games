@@ -9,20 +9,20 @@ export function StatusChip({ status }: statusChipProps) {
   let statusTitle: string;
 
   switch (status) {
-    case 'Concluido':
+    case 'Completo':
       className =
         'pl-4 pr-4 text-white bg-green-500 w-full max-w-40 min-w-28 max-h-8 flex items-center justify-center text-center h-10 rounded-full text-wrap overflow-hidden overflow-ellipsis';
-      statusTitle = 'Concluído';
+      statusTitle = 'Completo';
       break;
-    case 'Não Iniciado':
+    case 'Pendente':
       className =
         'pl-4 pr-4 text-white bg-purple-500 w-full max-w-40 min-w-28 max-h-8 flex items-center justify-center text-center h-10 rounded-full text-wrap overflow-hidden overflow-ellipsis';
-      statusTitle = 'Não Iniciado';
+      statusTitle = 'Pendente';
       break;
-    case 'Em Andamento':
+    case 'Progresso':
       className =
         'pl-4 pr-4 text-white bg-yellow-500 w-full max-w-40 min-w-28 max-h-8 flex items-center justify-center text-center h-10 rounded-full text-wrap overflow-hidden overflow-ellipsis';
-      statusTitle = 'Em Andamento';
+      statusTitle = 'Progresso';
       break;
     case 'Pausado':
       className =
