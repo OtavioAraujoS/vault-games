@@ -1,8 +1,4 @@
-export type GameStatus =
-  | 'Concluido'
-  | 'Em Andamento'
-  | 'Pausado'
-  | 'Não Iniciado';
+export type GameStatus = 'Completo' | 'Progresso' | 'Pausado' | 'Pendente';
 
 export interface Game {
   _id: string;
@@ -12,4 +8,6 @@ export interface Game {
   image: string;
   description: string;
   createdAt: string;
+  review?: string;
+  hours?: number;
 }
