@@ -7,21 +7,57 @@ import { Trash } from 'lucide-react';
 
 export const GamesColumns: ColumnDef<Game>[] = [
   {
+    accessorKey: 'Poster',
+    header: () => {
+      return <div className="ml-9 dark:text-white">Poster</div>;
+    },
+    cell: ({ row }) => {
+      return (
+        <img
+          src={row.original.image}
+          alt="Poster"
+          className="w-fit min-w-[6rem] h-44"
+        />
+      );
+    },
+  },
+  {
     accessorKey: 'Identificador',
     header: () => {
       return <div className="ml-16 dark:text-white">Identificador</div>;
     },
     cell: ({ row }) => {
-      return <div className="ml-4 dark:text-white">{row.original._id}</div>;
+      return (
+        <div className="ml-4 dark:text-white tracking-wider text-[0.9rem]">
+          {row.original._id}
+        </div>
+      );
     },
   },
   {
     accessorKey: 'Nome',
     header: () => {
-      return <div className="dark:text-white">Nome</div>;
+      return <div className="ml-12 dark:text-white">Nome</div>;
     },
     cell: ({ row }) => {
-      return <div className="dark:text-white">{row.original.nome}</div>;
+      return (
+        <div className="ml-4 dark:text-white tracking-wider text-[0.9rem]">
+          {row.original.nome}
+        </div>
+      );
+    },
+  },
+  {
+    accessorKey: 'Tempo',
+    header: () => {
+      return <div className="text-left dark:text-white">Horas de Jogo</div>;
+    },
+    cell: ({ row }) => {
+      return (
+        <div className="text-left dark:text-white tracking-wider text-[0.9rem]">
+          {row.original.hours}
+        </div>
+      );
     },
   },
   {
