@@ -32,15 +32,14 @@ export const Jogos = () => {
         <Card
           title="Jogos Não Iniciados"
           value={
-            gamesInfos.filter((item) => item.status === 'Não Iniciado')
-              ?.length || 0
+            gamesInfos.filter((item) => item.status === 'Pendente')?.length || 0
           }
         />
         <Card
           title="Em Andamento"
           value={
-            gamesInfos.filter((item) => item.status === 'Em Andamento')
-              ?.length || 0
+            gamesInfos.filter((item) => item.status === 'Progresso')?.length ||
+            0
           }
         />
         <Card
@@ -52,8 +51,7 @@ export const Jogos = () => {
         <Card
           title="Jogos Completos"
           value={
-            gamesInfos.filter((item) => item.status === 'Concluido')?.length ||
-            0
+            gamesInfos.filter((item) => item.status === 'Completo')?.length || 0
           }
         />
       </div>
