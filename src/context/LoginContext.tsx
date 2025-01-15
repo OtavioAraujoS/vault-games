@@ -15,9 +15,10 @@ export const LoginContext = create<LoginState, [['zustand/persist', unknown]]>(
       loginInfos: {
         id: '',
         name: '',
+        image: '',
       },
       setLoginInfos: (loginInfos: User) => set({ loginInfos }),
-      logout: () => set({ loginInfos: { id: '', name: '' } }),
+      logout: () => set({ loginInfos: { id: '', name: '', image: '' } }),
       getLoginInfos: () => get().loginInfos,
     }),
     {
