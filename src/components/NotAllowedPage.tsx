@@ -1,5 +1,5 @@
 import { LoginContext } from '@/context/LoginContext';
-import { Angry } from 'lucide-react';
+import { Angry, HeartCrack } from 'lucide-react';
 import { useNavigate } from 'react-router';
 import { Button } from './ui/button';
 
@@ -18,7 +18,7 @@ export const NotAllowedPage = () => {
 
   return loginInfos ? (
     <div className="bg-[#dad8d8] flex flex-col justify-center items-center gap-4 w-full h-full min-h-[100vh]">
-      <Angry className="text-red-600 w-fit h-[6rem] md:h-[8rem] lg:h-[10rem]" />
+      <HeartCrack className="text-red-600 w-fit h-[6rem] md:h-[8rem] lg:h-[10rem]" />
       <h1 className="text-[1.5rem] font-bold font-bebas text-center max-w-[60%] sm:text-[2rem] md:text-[2.5rem] lg:text-[3rem]">
         Página não encontrada! Clique no botão abaixo para ser redirecionado à
         página de Usuário
