@@ -20,5 +20,6 @@ export interface UsersInfo {
   nome: string;
   password: string;
   createdAt: string;
+  picture: string;
   __v: number;
 }
