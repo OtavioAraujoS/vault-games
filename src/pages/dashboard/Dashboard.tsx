@@ -13,11 +13,11 @@ export const Dashboard = () => {
 
   return loginInfos ? (
     <div style={{ padding: '20px' }}>
-      <h1>Dashboard</h1>
-      <p>Bem-vindo ao painel de controle!</p>
+      <h1 className="dark:text-white">Dashboard</h1>
+      <p className="dark:text-white">Bem-vindo ao painel de controle!</p>
       <div style={{ marginTop: '20px' }}>
         <h2>Estatísticas</h2>
-        <ul>
+        <ul className="dark:text-white">
           <li>ID: {loginInfos?.id}</li>
           <li>Usuário: {loginInfos?.name}</li>
           <li>
