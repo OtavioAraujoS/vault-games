@@ -1,12 +1,14 @@
 import { Avatar } from '@/components/Avatar';
 import { ThemeToggle } from '@/components/ThemeToggle';
 import { SidebarProvider, SidebarTrigger } from '@/components/ui/sidebar';
+import { LoginContext } from '@/context/LoginContext';
 import { ThemeProvider } from '@/context/ThemeContext';
 import React from 'react';
 import { Outlet } from 'react-router-dom';
 import { Sidebar } from './Sidebar';
 
 const Layout: React.FC = () => {
+  const { loginInfos } = LoginContext();
   return (
     <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
       <SidebarProvider>
@@ -17,10 +19,7 @@ const Layout: React.FC = () => {
             <div className="flex gap-10">
               <ThemeToggle />
 
-              <Avatar
-                src="https://avatars.githubusercontent.com/u/297548?s=60&v=4"
-                alt="Shadcn"
-              />
+              <Avatar src={loginInfos.image} alt={loginInfos.name} />
             </div>
           </header>
           <main>
