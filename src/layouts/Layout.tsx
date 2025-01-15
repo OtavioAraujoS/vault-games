@@ -8,6 +8,7 @@ import {
 import { SidebarProvider, SidebarTrigger } from '@/components/ui/sidebar';
 import { LoginContext } from '@/context/LoginContext';
 import { ThemeProvider } from '@/context/ThemeContext';
+import { LogOut, User } from 'lucide-react';
 import React from 'react';
 import { Outlet, useNavigate } from 'react-router-dom';
 import { Sidebar } from './Sidebar';
@@ -40,21 +41,19 @@ const Layout: React.FC = () => {
                       Opções
                     </h2>
                     <ul className="flex flex-col gap-2">
-                      <a href="/profile" className="hover:text-blue-500">
+                      <a
+                        href="/profile"
+                        className="flex gap-4 hover:text-blue-500"
+                      >
+                        <User size={20} />
                         <li>Conta</li>
                       </a>
                       <hr />
-
-                      <a href="/settings" className="hover:text-blue-500">
-                        <li>Configurações</li>
-                      </a>
-                      <hr />
-
                       <li
                         onClick={handleLogOut}
-                        className="hover:text-blue-500 cursor-pointer"
+                        className="flex gap-4 hover:text-blue-500 cursor-pointer"
                       >
-                        Logout
+                        <LogOut size={20} /> Logout
                       </li>
                     </ul>
                   </div>
