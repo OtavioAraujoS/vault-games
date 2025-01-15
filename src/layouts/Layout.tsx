@@ -1,14 +1,25 @@
 import { Avatar } from '@/components/Avatar';
 import { ThemeToggle } from '@/components/ThemeToggle';
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from '@/components/ui/popover';
 import { SidebarProvider, SidebarTrigger } from '@/components/ui/sidebar';
 import { LoginContext } from '@/context/LoginContext';
 import { ThemeProvider } from '@/context/ThemeContext';
 import React from 'react';
-import { Outlet } from 'react-router-dom';
+import { Outlet, useNavigate } from 'react-router-dom';
 import { Sidebar } from './Sidebar';
 
 const Layout: React.FC = () => {
-  const { loginInfos } = LoginContext();
+  const { loginInfos, logout } = LoginContext();
+  const navigate = useNavigate();
+
+  const handleLogOut = () => {
+    logout();
+    navigate('/');
+  };
   return (
     <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
       <SidebarProvider>
@@ -19,7 +30,36 @@ const Layout: React.FC = () => {
             <div className="flex gap-10">
               <ThemeToggle />
 
-              <Avatar src={loginInfos.image} alt={loginInfos.name} />
+              <Popover>
+                <PopoverTrigger>
+                  <Avatar src={loginInfos.image} alt={loginInfos.name} />
+                </PopoverTrigger>
+                <PopoverContent className="w-fit min-w-[10rem] dark:bg-[#212121] dark:border dark:border-gray-600">
+                  <div className="grid gap-4 text-center">
+                    <h2 className="text-lg font-bold font-bebas tracking-widest">
+                      Opções
+                    </h2>
+                    <ul className="flex flex-col gap-2">
+                      <a href="/profile" className="hover:text-blue-500">
+                        <li>Conta</li>
+                      </a>
+                      <hr />
+
+                      <a href="/settings" className="hover:text-blue-500">
+                        <li>Configurações</li>
+                      </a>
+                      <hr />
+
+                      <li
+                        onClick={handleLogOut}
+                        className="hover:text-blue-500 cursor-pointer"
+                      >
+                        Logout
+                      </li>
+                    </ul>
+                  </div>
+                </PopoverContent>
+              </Popover>
             </div>
           </header>
           <main>
