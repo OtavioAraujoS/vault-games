@@ -12,7 +12,7 @@ export const Dashboard = () => {
   };
 
   return loginInfos ? (
-    <div style={{ padding: '20px' }}>
+    <div style={{ padding: '20px', minHeight: '100vh' }}>
       <h1 className="dark:text-white">Dashboard</h1>
       <p className="dark:text-white">Bem-vindo ao painel de controle!</p>
       <div style={{ marginTop: '20px' }}>
