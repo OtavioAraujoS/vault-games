@@ -2,6 +2,7 @@ import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { LoginContext } from '@/context/LoginContext';
+import { useToast } from '@/hooks/use-toast';
 import { UsersInfo } from '@/types/User';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useState } from 'react';
@@ -25,6 +26,7 @@ export const Login = () => {
   const [isLogin, setIsLogin] = useState<boolean>(true);
   const [loading, setLoading] = useState<boolean>(false);
   const navigate = useNavigate();
+  const { toast } = useToast();
 
   const handleLogin: SubmitHandler<z.infer<typeof loginSchemma>> = async (
     data: z.infer<typeof loginSchemma>
@@ -40,7 +42,11 @@ export const Login = () => {
       navigate('/dashboard');
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error: any) {
-      console.log(mapError(error.message));
+      toast({
+        title: 'Erro',
+        description: mapError(error.message),
+        variant: 'destructive',
+      });
     } finally {
       setLoading(false);
     }
