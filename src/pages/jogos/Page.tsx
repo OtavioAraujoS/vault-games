@@ -1,16 +1,27 @@
 import { Card } from '@/components/Card';
 import { DataTable } from '@/components/DataTable';
 import { NotAllowedPage } from '@/components/NotAllowedPage';
+import { TitlePage } from '@/components/TitlePage';
+import { Button } from '@/components/ui/button';
 import { LoginContext } from '@/context/LoginContext';
+import { useToast } from '@/hooks/use-toast';
 import { gameService } from '@/services/games';
 import { Game } from '@/types/Games';
+import { mapError } from '@/utils/ErrosMap';
+import { Plus } from 'lucide-react';
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router';
 import { GamesColumns } from './GamesColumns';
-import { TitlePage } from '@/components/TitlePage';
 
 export const Jogos = () => {
   const [gamesInfos, setGamesInfos] = useState<Game[] | []>([]);
   const { loginInfos } = LoginContext();
+  const navigate = useNavigate();
+  const { toast } = useToast();
+
+  const handleRegisterGame = () => {
+    navigate('/cadastrar-jogos');
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -18,8 +29,13 @@ export const Jogos = () => {
         if (!loginInfos.id) return;
         const response = await gameService.getGamesByUser(loginInfos.id);
         setGamesInfos(response);
-      } catch (error) {
-        console.error(error);
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      } catch (error: any) {
+        toast({
+          title: 'Erro',
+          description: mapError(error.message),
+          variant: 'destructive',
+        });
       }
     };
     fetchData();
@@ -57,7 +73,16 @@ export const Jogos = () => {
       </div>
 
       <div className="flex flex-col gap-2 w-full">
-        <TitlePage title="Jogos Cadastrados " />
+        <div className="flex justify-between items-center">
+          <TitlePage title="Jogos Cadastrados " />
+
+          <Button
+            onClick={handleRegisterGame}
+            className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+          >
+            <Plus /> Cadastrar Jogo
+          </Button>
+        </div>
         <DataTable data={gamesInfos} columns={GamesColumns} />
       </div>
     </div>
