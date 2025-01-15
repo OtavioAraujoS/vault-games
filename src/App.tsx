@@ -3,7 +3,7 @@ import { NotAllowedPage } from './components/NotAllowedPage';
 import Layout from './layouts/Layout';
 import { Login } from './pages/auth/Login';
 import { Dashboard } from './pages/dashboard/Dashboard';
-import { Jogos } from './pages/jogos/Jogos';
+import { Jogos } from './pages/jogos/Page';
 
 function App() {
   return (
