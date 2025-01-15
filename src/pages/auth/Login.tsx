@@ -37,7 +37,11 @@ export const Login = () => {
         ? await userService.login(data)
         : await userService.register(data);
 
-      setLoginInfos({ name: response.nome, id: response._id });
+      setLoginInfos({
+        name: response.nome,
+        id: response._id,
+        image: response.picture,
+      });
 
       navigate('/dashboard');
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
