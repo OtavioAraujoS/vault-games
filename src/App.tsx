@@ -2,6 +2,7 @@ import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import { NotAllowedPage } from './components/NotAllowedPage';
 import Layout from './layouts/Layout';
 import { Login } from './pages/auth/Login';
+import { CadastrarJogos } from './pages/cadastrarJogos/Page';
 import { Dashboard } from './pages/dashboard/Dashboard';
 import { Jogos } from './pages/jogos/Page';
 
@@ -14,6 +15,7 @@ function App() {
           <Route path="dashboard" element={<Dashboard />} />
           <Route path="jogos" element={<Jogos />} />
         </Route>
+        <Route path="cadastrar-jogos" element={<CadastrarJogos />} />
         <Route path="*" element={<NotAllowedPage />} />
       </Routes>
     </Router>
