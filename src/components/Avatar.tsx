@@ -13,7 +13,11 @@ interface AvatarProps {
 export function Avatar({ src, alt, fallback }: AvatarProps) {
   return (
     <ShadcnAvatar>
-      <AvatarImage src={src} alt={alt} />
+      <AvatarImage
+        src={src}
+        alt={alt}
+        className="dark:border-[#575757] border-[#212121] border-[0.16rem] rounded-full"
+      />
       <AvatarFallback>{fallback || 'ST'}</AvatarFallback>
     </ShadcnAvatar>
   );
