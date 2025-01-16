@@ -78,7 +78,7 @@ export const Jogos = () => {
 
           <Button
             onClick={handleRegisterGame}
-            className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+            className="flex items-center gap-2 bg-blue-600 dark:bg-blue-600 hover:bg-blue-700 dark:hover:bg-blue-700 dark:text-white font-bold py-2 px-4 rounded"
           >
             <Plus /> Cadastrar Jogo
           </Button>
