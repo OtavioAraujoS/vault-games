@@ -29,8 +29,6 @@ const Layout: React.FC = () => {
           <header className="bg-[#FAFAFA] dark:bg-[#212121] bg-gray border-b border-gray-400 text-black dark:text-white p-4 flex justify-between items-center">
             <SidebarTrigger className="size-10 dark:bg-[#212121] border border-gray-400 dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-500" />
             <div className="flex gap-10">
-              <ThemeToggle />
-
               <Popover>
                 <PopoverTrigger>
                   <Avatar src={loginInfos.image} alt={loginInfos.name} />
@@ -59,6 +57,8 @@ const Layout: React.FC = () => {
                   </div>
                 </PopoverContent>
               </Popover>
+
+              <ThemeToggle />
             </div>
           </header>
           <main>
