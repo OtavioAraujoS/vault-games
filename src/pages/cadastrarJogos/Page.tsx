@@ -1,11 +1,28 @@
+import { Undo2 } from 'lucide-react';
+import { Form } from './components/Form';
+
 export const CadastrarJogos = () => {
   return (
-    <div className="grid grid-cols-2 gap-2 p-10 min-h-[100vh] w-full dark:bg-[#2B2738] dark:text-white">
-      <div>Imagem Aleatoria</div>
-      <div className="flex items-center justify-center">
-        <h1 className="text-[4rem] font-bold font-bebas tracking-wider text-center">
-          Cadastrar Jogo
-        </h1>
+    <div className="grid min-h-svh lg:grid-cols-2">
+      <div className="flex flex-col gap-12 p-6 md:p-10">
+        <div className="flex justify-center gap-2 md:justify-start">
+          <a href="/jogos" className="flex items-center gap-2 font-medium">
+            <div className="flex h-6 w-6 items-center justify-center rounded-md bg-primary text-primary-foreground">
+              <Undo2 className="size-4" />
+            </div>
+            Retornar
+          </a>
+        </div>
+        <div className="flex w-full">
+          <Form />
+        </div>
+      </div>
+      <div className="relative hidden bg-muted lg:block">
+        <img
+          src="/formWallpaper.png"
+          alt="Image"
+          className="absolute inset-0 h-full w-full object-cover"
+        />
       </div>
     </div>
   );
