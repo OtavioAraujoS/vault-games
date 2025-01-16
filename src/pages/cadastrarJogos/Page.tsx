@@ -4,11 +4,14 @@ import { Form } from './components/Form';
 export const CadastrarJogos = () => {
   return (
     <div className="grid min-h-svh lg:grid-cols-2">
-      <div className="flex flex-col gap-12 p-6 md:p-10">
+      <div className="flex flex-col gap-12 p-6 md:p-10 dark:bg-[#181818]">
         <div className="flex justify-center gap-2 md:justify-start">
-          <a href="/jogos" className="flex items-center gap-2 font-medium">
+          <a
+            href="/jogos"
+            className="flex items-center gap-2 font-medium dark:text-white"
+          >
             <div className="flex h-6 w-6 items-center justify-center rounded-md bg-primary text-primary-foreground">
-              <Undo2 className="size-4" />
+              <Undo2 className="size-4 dark:text-white" />
             </div>
             Retornar
           </a>
