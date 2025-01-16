@@ -55,7 +55,7 @@ export const GamesColumns: ColumnDef<Game>[] = [
     cell: ({ row }) => {
       return (
         <div className="text-left dark:text-white tracking-wider text-[0.9rem]">
-          {row.original.hours}
+          {row.original.hours !== 0 ? `${row.original.hours} Horas` : 'N/A'}
         </div>
       );
     },
