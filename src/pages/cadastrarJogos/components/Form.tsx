@@ -52,11 +52,12 @@ export const Form = () => {
     <ShadcnForm {...form}>
       <form onSubmit={handleSubmit} className="w-full">
         <div className="flex flex-col items-start gap-2 text-left">
-          <h1 className="text-2xl font-bold">Cadastrar Jogo</h1>
-          <p className="text-balance text-sm text-muted-foreground">
+          <h1 className="text-2xl font-bold dark:text-white">Cadastrar Jogo</h1>
+          <p className="text-balance text-sm text-muted-foreground dark:text-[#C4C4C4]">
             Insira as informações do jogo para cadastrar
           </p>
         </div>
+
         <hr className="w-full my-4 border-[#c4c4c4]" />
         <div className="flex flex-col gap-6">
           <FormField
@@ -64,7 +65,7 @@ export const Form = () => {
             name="nome"
             render={({ field }) => (
               <FormItem className="flex flex-col gap-1">
-                <FormLabel>Nome</FormLabel>
+                <FormLabel className="dark:text-white">Nome</FormLabel>
                 <FormControl>
                   <Input
                     placeholder="Insira o título do jogo"
@@ -82,7 +83,7 @@ export const Form = () => {
             name="description"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Descrição</FormLabel>
+                <FormLabel className="dark:text-white">Descrição</FormLabel>
                 <FormControl>
                   <Input
                     placeholder="Insira a descrição do jogo"
@@ -100,7 +101,7 @@ export const Form = () => {
             name="image"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Imagem</FormLabel>
+                <FormLabel className="dark:text-white">Imagem</FormLabel>
                 <FormControl>
                   <Input
                     placeholder="Insira a URL da imagem"
@@ -118,11 +119,11 @@ export const Form = () => {
             name="hours"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Horas</FormLabel>
+                <FormLabel className="dark:text-white">Horas</FormLabel>
                 <FormControl>
                   <Input
                     placeholder="Insira a quantidade de horas jogadas"
-                    className="w-full"
+                    className="w-full dark:text-white"
                     {...field}
                     defaultValue={0}
                     type="number"
@@ -139,7 +140,7 @@ export const Form = () => {
             name="review"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Review</FormLabel>
+                <FormLabel className="dark:text-white">Review</FormLabel>
                 <FormControl>
                   <Input
                     placeholder="Insira a sua review do jogo"
@@ -157,14 +158,18 @@ export const Form = () => {
             name="status"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Status</FormLabel>
+                <FormLabel className="dark:text-white">Status</FormLabel>
                 <Select
                   onValueChange={field.onChange}
                   defaultValue={field.value}
                 >
                   <FormControl>
                     <SelectTrigger>
-                      <SelectValue placeholder="Selecione o status do andamento do jogo" />
+                      <SelectValue
+                        placeholder="Selecione o status do andamento do jogo"
+                        className="dark:text-white"
+                        style={{ color: !field.value ? 'white' : 'inherit' }}
+                      />
                     </SelectTrigger>
                   </FormControl>
                   <SelectContent>
