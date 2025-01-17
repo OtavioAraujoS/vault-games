@@ -1,4 +1,4 @@
-import { Game } from '@/types/Games';
+import { CreateGame, Game } from '@/types/Games';
 import { api as apiService, ApiService, defaultUrl } from './api';
 
 class GameService {
@@ -7,6 +7,10 @@ class GameService {
   public getGamesByUser = async (id: string): Promise<Game[]> => {
     const response = await this.api.get(`${defaultUrl}/games/user/${id}`);
     return response as Game[];
+  };
+
+  public createGame = async (game: CreateGame) => {
+    await this.api.post(`${defaultUrl}/games`, game);
   };
 }
 export const gameService = new GameService(apiService);
