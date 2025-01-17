@@ -4,6 +4,7 @@ import Layout from './layouts/Layout';
 import { Login } from './pages/auth/Login';
 import { CadastrarJogos } from './pages/cadastrarJogos/Page';
 import { Dashboard } from './pages/dashboard/Dashboard';
+import { EditarJogos } from './pages/editarJogos/Page';
 import { Jogos } from './pages/jogos/Page';
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
         <Route element={<Layout />}>
           <Route path="dashboard" element={<Dashboard />} />
           <Route path="jogos" element={<Jogos />} />
+          <Route path="jogos/:id" element={<EditarJogos />} />
         </Route>
         <Route path="cadastrar-jogos" element={<CadastrarJogos />} />
         <Route path="*" element={<NotAllowedPage />} />
