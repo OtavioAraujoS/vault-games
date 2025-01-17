@@ -11,3 +11,13 @@ export interface Game {
   review?: string;
   hours?: number;
 }
+
+export interface CreateGame {
+  nome: string;
+  description: string;
+  image: string;
+  hours: number;
+  review: string;
+  status: GameStatus;
+  userId: string;
+}
