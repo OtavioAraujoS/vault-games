@@ -1,4 +1,6 @@
-import { createContext, useContext, useEffect, useState } from 'react';
+import { useEffect } from 'react';
+import { create } from 'zustand';
+import { persist } from 'zustand/middleware';
 
 type Theme = 'dark' | 'light' | 'system';
 
@@ -13,22 +15,33 @@ type ThemeProviderState = {
   setTheme: (theme: Theme) => void;
 };
 
-const initialState: ThemeProviderState = {
-  theme: 'system',
-  setTheme: () => null,
-};
-
-const ThemeProviderContext = createContext<ThemeProviderState>(initialState);
+const useThemeStore = create<
+  ThemeProviderState,
+  [['zustand/persist', ThemeProviderState]]
+>(
+  persist(
+    (set) => ({
+      theme: 'system',
+      setTheme: (theme: Theme) => set({ theme }),
+    }),
+    {
+      name: 'vite-ui-theme',
+    }
+  )
+);
 
 export function ThemeProvider({
   children,
   defaultTheme = 'system',
   storageKey = 'vite-ui-theme',
-  ...props
 }: ThemeProviderProps) {
-  const [theme, setTheme] = useState<Theme>(
-    () => (localStorage.getItem(storageKey) as Theme) || defaultTheme
-  );
+  const { theme, setTheme } = useThemeStore();
+
+  useEffect(() => {
+    const storedTheme =
+      (localStorage.getItem(storageKey) as Theme) || defaultTheme;
+    setTheme(storedTheme);
+  }, [defaultTheme, setTheme, storageKey]);
 
   useEffect(() => {
     const root = window.document.documentElement;
@@ -46,28 +59,13 @@ export function ThemeProvider({
     }
 
     root.classList.add(theme);
-  }, [theme]);
+    localStorage.setItem(storageKey, theme);
+  }, [theme, storageKey]);
 
-  const value = {
-    theme,
-    setTheme: (theme: Theme) => {
-      localStorage.setItem(storageKey, theme);
-      setTheme(theme);
-    },
-  };
-
-  return (
-    <ThemeProviderContext.Provider {...props} value={value}>
-      {children}
-    </ThemeProviderContext.Provider>
-  );
+  return <>{children}</>;
 }
 
 export const useTheme = () => {
-  const context = useContext(ThemeProviderContext);
-
-  if (context === undefined)
-    throw new Error('useTheme must be used within a ThemeProvider');
-
-  return context;
+  const { theme, setTheme } = useThemeStore();
+  return { theme, setTheme };
 };
