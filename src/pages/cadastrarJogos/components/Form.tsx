@@ -15,13 +15,13 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
+import { LoginContext } from '@/context/LoginContext';
 import { useToast } from '@/hooks/use-toast';
+import { gameService } from '@/services/games';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { registerGameSchema } from './FormSchema';
-import { gameService } from '@/services/games';
-import { LoginContext } from '@/context/LoginContext';
 
 export const Form = () => {
   const form = useForm<z.infer<typeof registerGameSchema>>({
@@ -193,7 +193,7 @@ export const Form = () => {
 
           <Button
             type="submit"
-            className="w-full bg-green-600 text-white dark:text-white dark:bg-green-500 dark:hover:bg-green-700 hover:bg-green-700"
+            className="mt-4 w-full bg-green-600 text-white dark:text-white dark:bg-green-500 dark:hover:bg-green-700 hover:bg-green-700"
           >
             Cadastrar
           </Button>
