@@ -20,33 +20,45 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { registerGameSchema } from './FormSchema';
+import { gameService } from '@/services/games';
+import { LoginContext } from '@/context/LoginContext';
 
 export const Form = () => {
   const form = useForm<z.infer<typeof registerGameSchema>>({
     resolver: zodResolver(registerGameSchema),
+    defaultValues: {
+      hours: '0',
+    },
   });
   const {
     formState: { errors },
   } = form;
+  const { loginInfos } = LoginContext();
   const { toast } = useToast();
 
-  const handleSubmit = form.handleSubmit(async (data) => {
-    try {
-      console.log(data);
+  const handleSubmit = form.handleSubmit(
+    async (data: z.infer<typeof registerGameSchema>) => {
+      await gameService.createGame({
+        ...data,
+        hours: Number(data.hours),
+        userId: loginInfos.id,
+      });
 
-      toast({
-        title: 'Jogo cadastrado com sucesso',
-        description: 'O jogo foi cadastrado com sucesso',
-        duration: 3000,
-      });
-    } catch {
-      toast({
-        title: 'Erro ao cadastrar jogo',
-        variant: 'destructive',
-        duration: 4000,
-      });
+      try {
+        toast({
+          title: 'Jogo cadastrado com sucesso',
+          description: 'O jogo foi cadastrado com sucesso',
+          duration: 3000,
+        });
+      } catch {
+        toast({
+          title: 'Erro ao cadastrar jogo',
+          variant: 'destructive',
+          duration: 4000,
+        });
+      }
     }
-  });
+  );
 
   return (
     <ShadcnForm {...form}>
@@ -69,7 +81,7 @@ export const Form = () => {
                 <FormControl>
                   <Input
                     placeholder="Insira o título do jogo"
-                    className="w-full"
+                    className="w-full dark:text-white"
                     {...field}
                   />
                 </FormControl>
@@ -87,7 +99,7 @@ export const Form = () => {
                 <FormControl>
                   <Input
                     placeholder="Insira a descrição do jogo"
-                    className="w-full"
+                    className="w-full dark:text-white"
                     {...field}
                   />
                 </FormControl>
@@ -105,7 +117,7 @@ export const Form = () => {
                 <FormControl>
                   <Input
                     placeholder="Insira a URL da imagem"
-                    className="w-full"
+                    className="w-full dark:text-white"
                     {...field}
                   />
                 </FormControl>
@@ -127,7 +139,6 @@ export const Form = () => {
                     {...field}
                     defaultValue={0}
                     type="number"
-                    min={0}
                   />
                 </FormControl>
                 <FormMessage>{errors.hours?.message}</FormMessage>
@@ -144,7 +155,7 @@ export const Form = () => {
                 <FormControl>
                   <Input
                     placeholder="Insira a sua review do jogo"
-                    className="w-full"
+                    className="w-full dark:text-white"
                     {...field}
                   />
                 </FormControl>
@@ -157,7 +168,7 @@ export const Form = () => {
             control={form.control}
             name="status"
             render={({ field }) => (
-              <FormItem className="text-white">
+              <FormItem className="dark:text-white">
                 <FormLabel className="dark:text-white">Status</FormLabel>
                 <Select
                   onValueChange={field.onChange}
@@ -182,7 +193,7 @@ export const Form = () => {
 
           <Button
             type="submit"
-            className="w-full bg-green-600 text-white dark:bg-green-500 dark:hover:bg-green-700 hover:bg-green-700"
+            className="w-full bg-green-600 text-white dark:text-white dark:bg-green-500 dark:hover:bg-green-700 hover:bg-green-700"
           >
             Cadastrar
           </Button>
