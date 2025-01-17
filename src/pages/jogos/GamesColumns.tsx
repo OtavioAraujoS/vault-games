@@ -24,11 +24,13 @@ export const GamesColumns: ColumnDef<Game>[] = [
   {
     accessorKey: 'Identificador',
     header: () => {
-      return <div className="ml-16 dark:text-white">Identificador</div>;
+      return (
+        <div className="flex justify-center dark:text-white">Identificador</div>
+      );
     },
     cell: ({ row }) => {
       return (
-        <div className="ml-4 dark:text-white tracking-wider text-[0.9rem]">
+        <div className="flex justify-center dark:text-white tracking-wider text-[0.9rem]">
           {row.original._id}
         </div>
       );
@@ -37,11 +39,11 @@ export const GamesColumns: ColumnDef<Game>[] = [
   {
     accessorKey: 'Nome',
     header: () => {
-      return <div className="ml-12 dark:text-white">Nome</div>;
+      return <div className="flex justify-center dark:text-white">Nome</div>;
     },
     cell: ({ row }) => {
       return (
-        <div className="ml-4 dark:text-white tracking-wider text-[0.9rem]">
+        <div className="flex justify-center dark:text-white tracking-wider text-[0.9rem]">
           {row.original.nome}
         </div>
       );
@@ -50,11 +52,11 @@ export const GamesColumns: ColumnDef<Game>[] = [
   {
     accessorKey: 'Tempo',
     header: () => {
-      return <div className="text-left dark:text-white">Horas de Jogo</div>;
+      return <div className="text-center dark:text-white">Horas de Jogo</div>;
     },
     cell: ({ row }) => {
       return (
-        <div className="text-left dark:text-white tracking-wider text-[0.9rem]">
+        <div className="text-center dark:text-white tracking-wider text-[0.9rem]">
           {row.original.hours !== 0 ? `${row.original.hours} Horas` : 'N/A'}
         </div>
       );
@@ -63,11 +65,11 @@ export const GamesColumns: ColumnDef<Game>[] = [
   {
     accessorKey: 'Status',
     header: () => {
-      return <div className="ml-14 dark:text-white">Status</div>;
+      return <div className="flex justify-center dark:text-white">Status</div>;
     },
     cell: ({ row }) => {
       return (
-        <div>
+        <div className="flex justify-center">
           <StatusChip status={row.original.status} />
         </div>
       );
