@@ -25,7 +25,7 @@ export const Login = () => {
       </div>
       <div className="relative hidden bg-muted lg:block">
         <img
-          src="/loginWallpaper.png"
+          src="/loginWallpaper.webp"
           alt="Image"
           className="absolute inset-0 h-full w-full object-cover"
         />
