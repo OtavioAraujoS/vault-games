@@ -22,7 +22,7 @@ export const CadastrarJogos = () => {
       </div>
       <div className="relative hidden bg-muted lg:block">
         <img
-          src="/formWallpaper.png"
+          src="/formWallpaper.webp"
           alt="Image"
           className="absolute inset-0 h-full w-full object-cover"
         />
