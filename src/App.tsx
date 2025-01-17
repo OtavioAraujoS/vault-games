@@ -15,8 +15,8 @@ function App() {
         <Route element={<Layout />}>
           <Route path="dashboard" element={<Dashboard />} />
           <Route path="jogos" element={<Jogos />} />
-          <Route path="jogos/:id" element={<EditarJogos />} />
         </Route>
+        <Route path="jogos/:id" element={<EditarJogos />} />
         <Route path="cadastrar-jogos" element={<CadastrarJogos />} />
         <Route path="*" element={<NotAllowedPage />} />
       </Routes>
