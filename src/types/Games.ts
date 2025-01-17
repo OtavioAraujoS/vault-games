@@ -9,7 +9,7 @@ export interface Game {
   description: string;
   createdAt: string;
   review?: string;
-  hours?: number;
+  hours: number | string;
 }
 
 export interface CreateGame {
