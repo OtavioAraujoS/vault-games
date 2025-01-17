@@ -157,7 +157,7 @@ export const Form = () => {
             control={form.control}
             name="status"
             render={({ field }) => (
-              <FormItem>
+              <FormItem className="text-white">
                 <FormLabel className="dark:text-white">Status</FormLabel>
                 <Select
                   onValueChange={field.onChange}
@@ -165,11 +165,7 @@ export const Form = () => {
                 >
                   <FormControl>
                     <SelectTrigger>
-                      <SelectValue
-                        placeholder="Selecione o status do andamento do jogo"
-                        className="dark:text-white"
-                        style={{ color: !field.value ? 'white' : 'inherit' }}
-                      />
+                      <SelectValue placeholder="Selecione o status do andamento do jogo" />
                     </SelectTrigger>
                   </FormControl>
                   <SelectContent>
