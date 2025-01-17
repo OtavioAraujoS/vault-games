@@ -13,7 +13,10 @@ export const registerGameSchema = z.object({
   status: z.enum(['Pendente', 'Progresso', 'Pausado', 'Completo'], {
     required_error: 'Status é obrigatório',
   }),
-  hours: z.number({ required_error: 'Horas é obrigatório' }),
+  hours: z.string({
+    required_error: 'Horas é obrigatório',
+    invalid_type_error: 'Horas deve ser um número',
+  }),
   review: z
     .string({ required_error: 'Review é obrigatório' })
     .nonempty('Review é obrigatório'),
