@@ -20,6 +20,7 @@ import { useToast } from '@/hooks/use-toast';
 import { gameService } from '@/services/games';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router';
 import { z } from 'zod';
 import { registerGameSchema } from './FormSchema';
 
@@ -35,21 +36,23 @@ export const Form = () => {
   } = form;
   const { loginInfos } = LoginContext();
   const { toast } = useToast();
+  const navigate = useNavigate();
 
   const handleSubmit = form.handleSubmit(
     async (data: z.infer<typeof registerGameSchema>) => {
-      await gameService.createGame({
-        ...data,
-        hours: Number(data.hours),
-        userId: loginInfos.id,
-      });
-
       try {
+        await gameService.createGame({
+          ...data,
+          hours: Number(data.hours),
+          userId: loginInfos.id,
+        });
+
         toast({
           title: 'Jogo cadastrado com sucesso',
           description: 'O jogo foi cadastrado com sucesso',
           duration: 3000,
         });
+        navigate('/jogos');
       } catch {
         toast({
           title: 'Erro ao cadastrar jogo',
