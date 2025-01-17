@@ -17,5 +17,9 @@ class GameService {
   public createGame = async (game: CreateGame) => {
     await this.api.post(`${defaultUrl}/games`, game);
   };
+
+  public updateGame = async (id: string, game: CreateGame) => {
+    await this.api.put(`${defaultUrl}/games/${id}`, game);
+  };
 }
 export const gameService = new GameService(apiService);
