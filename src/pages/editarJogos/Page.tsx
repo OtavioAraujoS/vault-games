@@ -1,11 +1,14 @@
+import { useToast } from '@/hooks/use-toast';
 import { gameService } from '@/services/games';
 import { Game } from '@/types/Games';
+import { mapError } from '@/utils/ErrosMap';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 
 export const EditarJogos = () => {
   const [gameInfos, setGameInfos] = useState<Game | object>({});
   const { id } = useParams();
+  const { toast } = useToast();
 
   useEffect(() => {
     const getGameInfos = async () => {
@@ -15,8 +18,13 @@ export const EditarJogos = () => {
         }
         const response = await gameService.getGameInfosById(id);
         setGameInfos(response);
-      } catch (error) {
-        console.log(error);
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      } catch (error: any) {
+        toast({
+          title: 'Erro ao buscar informações do jogo',
+          description: mapError(error.message),
+          variant: 'destructive',
+        });
       }
     };
 
