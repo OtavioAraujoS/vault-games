@@ -1,9 +1,10 @@
 import { Dialog } from '@/components/Dialog';
 import { StatusChip } from '@/components/StatusChip';
+import { Button } from '@/components/ui/button';
 import { UnlinkMessage } from '@/components/UnlinkMessage';
 import { Game } from '@/types/Games';
 import type { ColumnDef } from '@tanstack/react-table';
-import { Trash } from 'lucide-react';
+import { Pencil, Trash } from 'lucide-react';
 
 export const GamesColumns: ColumnDef<Game>[] = [
   {
@@ -76,9 +77,32 @@ export const GamesColumns: ColumnDef<Game>[] = [
     },
   },
   {
+    accessorKey: 'Editar',
+    header: () => {
+      return <div className="flex justify-center dark:text-white">Editar</div>;
+    },
+    cell: ({ row }) => {
+      return (
+        <div className="flex justify-center">
+          <a
+            href={`/jogos/${row.original._id}`}
+            className="dark:text-white hover:underline"
+          >
+            <Button
+              variant="outline"
+              className="rounded-full size-12 bg-blue-600 dark:bg-blue-600 hover:bg-blue-700 dark:hover:bg-blue-700"
+            >
+              <Pencil color="white" />
+            </Button>
+          </a>
+        </div>
+      );
+    },
+  },
+  {
     accessorKey: 'options',
     header: () => {
-      return <div className="dark:text-white">Opções</div>;
+      return <div className="dark:text-white">Apagar</div>;
     },
     cell: ({ row }) => {
       return (
