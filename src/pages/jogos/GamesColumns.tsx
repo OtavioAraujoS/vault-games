@@ -16,7 +16,7 @@ export const GamesColumns: ColumnDef<Game>[] = [
         <img
           src={row.original.image}
           alt="Poster"
-          className="w-fit min-w-[6rem] h-44"
+          className="w-fit max-w-[7.5rem] h-44"
         />
       );
     },
