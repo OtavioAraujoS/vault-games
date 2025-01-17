@@ -9,6 +9,11 @@ class GameService {
     return response as Game[];
   };
 
+  public getGameInfosById = async (id: string): Promise<Game> => {
+    const response = await this.api.get(`${defaultUrl}/games/${id}`);
+    return response as Game;
+  };
+
   public createGame = async (game: CreateGame) => {
     await this.api.post(`${defaultUrl}/games`, game);
   };
