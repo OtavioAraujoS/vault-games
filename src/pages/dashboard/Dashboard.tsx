@@ -6,6 +6,7 @@ import { DashboardInfos } from '@/types/Dashboard';
 import { mapError } from '@/utils/ErrosMap';
 import { useEffect, useState } from 'react';
 import { GamesByStatus } from './components/GamesByStatus';
+import { GamesRegisteredByUser } from './components/GamesRegisteredByUser';
 
 export const Dashboard = () => {
   const [dashboardInfos, setDashboardInfos] = useState<DashboardInfos>();
@@ -72,10 +73,14 @@ export const Dashboard = () => {
         />
       </div>
 
-      <div className="flex flex-col">
+      <div className="flex flex-col w-full">
         <h2 className="font-bold font-bebas text-[2rem] text-center lg:text-left">
           Jogos cadastrados por usuário
         </h2>
+
+        <GamesRegisteredByUser
+          gameStatusDistribution={dashboardInfos?.gamesPerUser}
+        />
       </div>
     </div>
   ) : (
