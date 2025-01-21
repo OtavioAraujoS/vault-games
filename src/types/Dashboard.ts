@@ -2,6 +2,7 @@ import { GameStatus } from './Games';
 
 export interface GamesPerUser {
   userId: string;
+  userImage: string;
   userName: string;
   gameCount: number;
   timePlayed: number;
