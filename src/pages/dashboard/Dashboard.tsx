@@ -78,9 +78,11 @@ export const Dashboard = () => {
           Jogos cadastrados por usuário
         </h2>
 
-        <GamesRegisteredByUser
-          gameStatusDistribution={dashboardInfos?.gamesPerUser}
-        />
+        <div>
+          <GamesRegisteredByUser
+            gameStatusDistribution={dashboardInfos?.gamesPerUser}
+          />
+        </div>
       </div>
     </div>
   ) : (
