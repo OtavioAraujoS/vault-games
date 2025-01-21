@@ -8,15 +8,26 @@ export const GamesRegisteredByUser = ({
   gameStatusDistribution,
 }: GamesByStatusProps) => {
   return (
-    <div className="w-full grid grid-cols-1 gap-4 lg:grid-cols-2 mt-4">
+    <div className="flex flex-col gap-12 mt-5 w-full">
       {gameStatusDistribution?.map((gameStatus) => {
         return (
           <div
             key={gameStatus.userId}
-            className="w-full grid grid-cols-3 items-center gap-4"
+            className="flex flex-wrap flex-col md:justify-center lg:flex-row lg:justify-between gap-8 lg:gap-0 items-center w-full border-b-2 border-gray-300 dark:border-gray-700 py-6"
           >
-            <div className="flex justify-start items-center text-center rounded-full bg-[#F2F2F2] dark:bg-[#212121] size-16">
-              <h3 className="text-center">{gameStatus.userName}</h3>
+            <div className="flex items-center gap-8">
+              <img
+                src={
+                  gameStatus.userImage !== 'userPicture'
+                    ? gameStatus.userImage
+                    : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSt2deTTpL5Z_Y-FBxr3DhfCdoDNHvUEmtvjQ&s'
+                }
+                alt="profile"
+                className="rounded-full size-16"
+              />
+              <h3 className="text-[1.2rem] font-bebas tracking-wider">
+                {gameStatus.userName}
+              </h3>
             </div>
             <div className="flex flex-col items-center">
               <h3 className="text-[1.5rem] font-bebas tracking-wider">
