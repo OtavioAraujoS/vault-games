@@ -7,9 +7,13 @@ interface GamesByStatusProps {
 export const GamesRegisteredByUser = ({
   gameStatusDistribution,
 }: GamesByStatusProps) => {
+  const sortedGameStatusDistribution = gameStatusDistribution?.sort(
+    (a, b) => b.timePlayed - a.timePlayed
+  );
+
   return (
     <div className="flex flex-col gap-12 mt-5 w-full">
-      {gameStatusDistribution?.map((gameStatus) => {
+      {sortedGameStatusDistribution?.map((gameStatus) => {
         return (
           <div
             key={gameStatus.userId}
