@@ -4,9 +4,7 @@ interface GamesByStatusProps {
   gameStatusDistribution?: GamesPerUser[];
 }
 
-export const GamesRegisteredByUser = ({
-  gameStatusDistribution,
-}: GamesByStatusProps) => {
+export const RankByHours = ({ gameStatusDistribution }: GamesByStatusProps) => {
   const sortedGameStatusDistribution = gameStatusDistribution?.sort(
     (a, b) => b.timePlayed - a.timePlayed
   );

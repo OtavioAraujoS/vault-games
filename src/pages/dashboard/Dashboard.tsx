@@ -75,7 +75,7 @@ export const Dashboard = () => {
 
       <div className="flex flex-col w-full">
         <h2 className="font-bold font-bebas text-[2rem] text-center lg:text-left">
-          Jogos cadastrados por usuário
+          Ranking de horas jogadas
         </h2>
 
         <div>
