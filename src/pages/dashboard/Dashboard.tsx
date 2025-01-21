@@ -6,7 +6,7 @@ import { DashboardInfos } from '@/types/Dashboard';
 import { mapError } from '@/utils/ErrosMap';
 import { useEffect, useState } from 'react';
 import { GamesByStatus } from './components/GamesByStatus';
-import { GamesRegisteredByUser } from './components/GamesRegisteredByUser';
+import { RankByHours } from './components/RankByHours';
 
 export const Dashboard = () => {
   const [dashboardInfos, setDashboardInfos] = useState<DashboardInfos>();
@@ -79,9 +79,7 @@ export const Dashboard = () => {
         </h2>
 
         <div>
-          <GamesRegisteredByUser
-            gameStatusDistribution={dashboardInfos?.gamesPerUser}
-          />
+          <RankByHours gameStatusDistribution={dashboardInfos?.gamesPerUser} />
         </div>
       </div>
     </div>
