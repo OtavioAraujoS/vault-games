@@ -36,10 +36,15 @@ export const GamesByUser = ({ userId }: GamesByUserProps) => {
     <div className="flex flex-wrap gap-6 mt-5">
       {gamesByUser.map((item: Game) => (
         <div
-          className="flex flex-col gap-2 h-fit min-h-[25rem] w-full max-w-64 max-h-[26rem] overflow-hidden bg-transparent border border-gray-300 rounded-md p-4"
+          className="flex flex-col gap-2 h-fit min-h-[25rem] w-full max-w-64 max-h-[26rem] bg-[#FAFAFA] dark:bg-[#212121] overflow-hidden bg-transparent border border-gray-300 rounded-md p-4"
           key={item._id}
         >
-          <img src={item.image} alt={item.nome} className="size-48" loading='lazy' />
+          <img
+            src={item.image}
+            alt={item.nome}
+            className="size-48"
+            loading="lazy"
+          />
           <h1 className="text-[1.8rem] font-bebas tracking-wider">
             {item.nome}
           </h1>
