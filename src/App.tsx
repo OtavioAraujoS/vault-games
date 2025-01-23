@@ -20,6 +20,7 @@ function App() {
           <Route path="usuarios" element={<Usuarios />} />
         </Route>
         <Route path="jogos/:id" element={<EditarJogos />} />
+        <Route path="usuarios/:id" element={<EditarJogos />} />
         <Route path="cadastrar-jogos" element={<CadastrarJogos />} />
         <Route path="cadastrar-usuario" element={<CadastrarUsuario />} />
         <Route path="*" element={<NotAllowedPage />} />
