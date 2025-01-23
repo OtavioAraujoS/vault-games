@@ -2,11 +2,11 @@ import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import { NotAllowedPage } from './components/NotAllowedPage';
 import Layout from './layouts/Layout';
 import { Login } from './pages/auth/Login';
-import { CadastrarUsuario } from './pages/cadastrarUsuario/Page';
 import { Dashboard } from './pages/dashboard/Dashboard';
 import { CadastrarJogos } from './pages/jogos/cadastrarJogos/Page';
 import { EditarJogos } from './pages/jogos/editarJogos/Page';
 import { Jogos } from './pages/jogos/Page';
+import { CadastrarUsuario } from './pages/usuarios/cadastrarUsuario/Page';
 import { Usuarios } from './pages/usuarios/Page';
 
 function App() {
