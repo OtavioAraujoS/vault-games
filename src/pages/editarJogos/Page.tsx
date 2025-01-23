@@ -72,7 +72,7 @@ export const EditarJogos = () => {
       </div>
     </div>
   ) : (
-    <div className="flex flex-col gap-4 justify-center items-center h-full min-h-[100vh] dark:bg-[#181818]">
+    <div className="flex flex-col gap-4 justify-center items-center h-screen dark:bg-[#181818]">
       <h1 className="text-2xl font-bold dark:text-white">
         Jogo não encontrado
       </h1>

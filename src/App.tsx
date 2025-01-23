@@ -6,6 +6,7 @@ import { CadastrarJogos } from './pages/cadastrarJogos/Page';
 import { Dashboard } from './pages/dashboard/Dashboard';
 import { EditarJogos } from './pages/editarJogos/Page';
 import { Jogos } from './pages/jogos/Page';
+import { Usuarios } from './pages/usuarios/Page';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route element={<Layout />}>
           <Route path="dashboard" element={<Dashboard />} />
           <Route path="jogos" element={<Jogos />} />
+          <Route path="usuarios" element={<Usuarios />} />
         </Route>
         <Route path="jogos/:id" element={<EditarJogos />} />
         <Route path="cadastrar-jogos" element={<CadastrarJogos />} />
