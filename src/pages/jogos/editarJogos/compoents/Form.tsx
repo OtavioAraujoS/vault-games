@@ -17,7 +17,7 @@ import {
 } from '@/components/ui/select';
 import { LoginContext } from '@/context/LoginContext';
 import { useToast } from '@/hooks/use-toast';
-import { registerGameSchema } from '@/pages/cadastrarJogos/components/FormSchema';
+import { registerGameSchema } from '@/pages/jogos/cadastrarJogos/components/FormSchema';
 import { gameService } from '@/services/games';
 import { Game } from '@/types/Games';
 import { zodResolver } from '@hookform/resolvers/zod';
