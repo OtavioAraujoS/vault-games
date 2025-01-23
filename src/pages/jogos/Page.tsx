@@ -42,7 +42,7 @@ export const Jogos = () => {
   }, [loginInfos.id]);
 
   return loginInfos ? (
-    <div className="flex flex-col h-screen w-full p-4 gap-4">
+    <div className="flex flex-col h-full min-h-screen w-full p-12 gap-4">
       <div className="flex flex-wrap gap-4">
         <Card title="Jogos Cadastrados" value={gamesInfos.length || 0} />
         <Card

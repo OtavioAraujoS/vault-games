@@ -39,7 +39,7 @@ export const Dashboard = () => {
   }, []);
 
   return loginInfos ? (
-    <div className="flex flex-col gap-8 dark:text-white h-screen p-12">
+    <div className="flex flex-col gap-8 dark:text-white h-full min-h-screen p-12">
       <div className="flex flex-wrap-reverse justify-center items-center gap-6 pb-4 lg:justify-between lg:gap-0">
         <div>
           <h1 className="font-bold font-bebas text-[2.5rem] text-center lg:text-left">
