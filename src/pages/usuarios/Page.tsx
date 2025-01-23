@@ -28,7 +28,7 @@ export const Usuarios = () => {
     }
 
     const redirectUser = (id: string) => {
-        navigate(`/editar-usuario/${id}`)
+        navigate(`/usuarios/${id}`)
     }
 
     useEffect(() => {
@@ -54,7 +54,7 @@ export const Usuarios = () => {
                             <p className="text-gray-600 dark:text-gray-300 lg:text-[1.2rem] font-bebas">Usuário desde: {new Date(user.createdAt).toLocaleDateString()}</p>
                         </div>
                         <Button
-                            disabled={loginInfos.id === user._id}
+                            disabled={loginInfos.id !== user._id}
                             className="w-full text-[0.6rem] md:text-[0.8rem] lg:text-[1rem] h-10 bg-blue-600 text-white dark:text-white dark:bg-blue-600 dark:hover:bg-blue-700 hover:bg-blue-700"
                             onClick={() => redirectUser(user._id)}
                         >
