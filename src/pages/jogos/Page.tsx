@@ -83,7 +83,7 @@ export const Jogos = () => {
             <Plus /> Cadastrar Jogo
           </Button>
         </div>
-        <DataTable data={gamesInfos} columns={GamesColumns} />
+        <DataTable data={gamesInfos} columns={GamesColumns()} />
       </div>
     </div>
   ) : (
