@@ -31,7 +31,7 @@ export const Usuarios = () => {
         <div className="flex flex-col h-full min-h-screen p-12 gap-8">
             <div className="flex flex-wrap justify-between items-center">
                 <TitlePage title="Usuários Cadastrados no Sistema" />
-                <Link to="/usuarios/cadastrar">
+                <Link to="/cadastrar-usuario">
                     <Button className="text-[0.6rem] md:text-[0.8rem] lg:text-[1rem] h-10 bg-blue-600 text-white dark:text-white dark:bg-blue-600 dark:hover:bg-blue-700 hover:bg-blue-700"><Plus /> Cadastrar Usuário</Button>
                 </Link>
             </div>
