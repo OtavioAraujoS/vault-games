@@ -11,6 +11,7 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from '@/components/ui/sidebar';
+import { Link } from 'react-router';
 
 const items = [
   {
@@ -48,12 +49,12 @@ export function Sidebar() {
                     asChild
                     className="w-full h-12 border-b border-gray-300 dark:border-gray-700"
                   >
-                    <a href={item.url}>
+                    <Link to={item.url}>
                       <item.icon />
                       <span className="text-[1rem] tracking-wider">
                         {item.title}
                       </span>
-                    </a>
+                    </Link>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
               ))}
