@@ -23,7 +23,7 @@ export const CadastrarUsuario = () => {
             </div>
             <div className="relative hidden bg-muted lg:block">
                 <img
-                    src="/formWallpaper.webp"
+                    src="/userFormWallpaper.webp"
                     alt="Image"
                     className="absolute inset-0 h-full w-full object-cover"
                     loading='lazy'
