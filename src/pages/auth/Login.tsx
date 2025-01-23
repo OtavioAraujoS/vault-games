@@ -25,6 +25,7 @@ export const Login = () => {
           src="/loginWallpaper.webp"
           alt="Image"
           className="absolute inset-0 h-full w-full object-cover"
+          loading='lazy'
         />
       </div>
     </div>

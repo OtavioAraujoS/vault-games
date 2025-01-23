@@ -26,6 +26,7 @@ export const RankByHours = ({ gameStatusDistribution }: GamesByStatusProps) => {
                 }
                 alt="profile"
                 className="rounded-full size-16"
+                loading='lazy'
               />
               <h3 className="text-[1.2rem] font-bebas tracking-wider">
                 {gameStatus.userName}

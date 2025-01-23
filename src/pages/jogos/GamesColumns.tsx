@@ -47,6 +47,7 @@ export const GamesColumns = () => {
             src={row.original.image}
             alt="Poster"
             className="w-fit max-w-[7.5rem] h-44"
+            loading='lazy'
           />
         );
       },

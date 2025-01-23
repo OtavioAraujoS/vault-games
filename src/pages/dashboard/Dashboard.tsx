@@ -59,6 +59,7 @@ export const Dashboard = () => {
             }
             alt="profile"
             className="rounded-full size-28 shadow-lg"
+            loading='lazy'
           />
         </div>
       </div>
