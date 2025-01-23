@@ -53,8 +53,8 @@ export const Dashboard = () => {
 
         <div>
           <img
-            src={
-              loginInfos.image ||
+            src={loginInfos.image !== "userPicture" ?
+              loginInfos.image :
               'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSt2deTTpL5Z_Y-FBxr3DhfCdoDNHvUEmtvjQ&s'
             }
             alt="profile"
