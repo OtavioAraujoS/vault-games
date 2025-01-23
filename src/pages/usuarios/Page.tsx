@@ -1,15 +1,18 @@
 import { TitlePage } from "@/components/TitlePage"
 import { Button } from "@/components/ui/button"
+import { LoginContext } from "@/context/LoginContext"
 import { useToast } from "@/hooks/use-toast"
 import { userService } from "@/services/user"
 import { UsersInfo } from "@/types/User"
-import { Plus } from "lucide-react"
+import { Pencil, Plus } from "lucide-react"
 import { useEffect, useState } from "react"
-import { Link } from "react-router"
+import { Link, useNavigate } from "react-router"
 
 export const Usuarios = () => {
     const [users, setUsers] = useState<UsersInfo[]>([])
+    const { loginInfos } = LoginContext()
     const { toast } = useToast()
+    const navigate = useNavigate()
 
     const getSystemUsers = async () => {
         try {
@@ -22,6 +25,10 @@ export const Usuarios = () => {
                 variant: "destructive"
             })
         }
+    }
+
+    const redirectUser = (id: string) => {
+        navigate(`/editar-usuario/${id}`)
     }
 
     useEffect(() => {
@@ -46,6 +53,13 @@ export const Usuarios = () => {
                             <h2 className="lg:text-[1.4rem] tracking-wider font-bebas dark:text-white">{user.nome}</h2>
                             <p className="text-gray-600 dark:text-gray-300 lg:text-[1.2rem] font-bebas">Usuário desde: {new Date(user.createdAt).toLocaleDateString()}</p>
                         </div>
+                        <Button
+                            disabled={loginInfos.id === user._id}
+                            className="w-full text-[0.6rem] md:text-[0.8rem] lg:text-[1rem] h-10 bg-blue-600 text-white dark:text-white dark:bg-blue-600 dark:hover:bg-blue-700 hover:bg-blue-700"
+                            onClick={() => redirectUser(user._id)}
+                        >
+                            <Pencil /> Editar Usuário
+                        </Button>
                     </div>
                 )) : (
                     <p className="dark:text-white">Nenhum usuário cadastrado</p>

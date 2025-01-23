@@ -5,7 +5,7 @@ import { Login } from './pages/auth/Login';
 import { CadastrarJogos } from './pages/cadastrarJogos/Page';
 import { CadastrarUsuario } from './pages/cadastrarUsuario/Page';
 import { Dashboard } from './pages/dashboard/Dashboard';
-import { EditarJogos } from './pages/editarJogos/Page';
+import { EditarJogos } from './pages/usuarios/editarJogos/Page';
 import { Jogos } from './pages/jogos/Page';
 import { Usuarios } from './pages/usuarios/Page';
 
