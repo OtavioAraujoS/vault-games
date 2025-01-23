@@ -20,8 +20,6 @@ const Layout: React.FC = () => {
     logout();
     navigate('/');
   };
-
-  console.log(loginInfos);
   return (
     <SidebarProvider>
       <Sidebar />
