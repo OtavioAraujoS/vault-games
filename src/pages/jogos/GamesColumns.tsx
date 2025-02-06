@@ -53,21 +53,6 @@ export const GamesColumns = () => {
       },
     },
     {
-      accessorKey: 'Identificador',
-      header: () => {
-        return (
-          <div className="flex justify-center dark:text-white">Identificador</div>
-        );
-      },
-      cell: ({ row }) => {
-        return (
-          <div className="flex justify-center dark:text-white tracking-wider text-[0.9rem]">
-            {row.original._id}
-          </div>
-        );
-      },
-    },
-    {
       accessorKey: 'Nome',
       header: () => {
         return <div className="flex justify-center dark:text-white">Nome</div>;
