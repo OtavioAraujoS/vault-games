@@ -15,13 +15,24 @@ import { GamesColumns } from './GamesColumns';
 
 export const Jogos = () => {
   const [gamesInfos, setGamesInfos] = useState<Game[] | []>([]);
+  const [currentPage, setCurrentPage] = useState(1);
   const { loginInfos } = LoginContext();
   const navigate = useNavigate();
   const { toast } = useToast();
+  const itemsPerPage = 10;
 
   const handleRegisterGame = () => {
     navigate('/cadastrar-jogos');
   };
+
+  const handlePageChange = (page: number) => {
+    setCurrentPage(page);
+  };
+
+  const paginatedGames = gamesInfos.slice(
+    (currentPage - 1) * itemsPerPage,
+    currentPage * itemsPerPage
+  );
 
   useEffect(() => {
     const fetchData = async () => {
@@ -83,7 +94,23 @@ export const Jogos = () => {
             <Plus /> Cadastrar Jogo
           </Button>
         </div>
-        <DataTable data={gamesInfos} columns={GamesColumns()} />
+
+        <DataTable data={paginatedGames} columns={GamesColumns()} />
+        {}
+        <div className="flex justify-center mt-4 gap-2">
+          {Array.from(
+            { length: Math.ceil(gamesInfos.length / itemsPerPage) },
+            (_, index) => (
+              <Button
+                key={index}
+                onClick={() => handlePageChange(index + 1)}
+                variant={currentPage === index + 1 ? 'default' : 'secondary'}
+              >
+                {index + 1}
+              </Button>
+            )
+          )}
+        </div>
       </div>
     </div>
   ) : (
