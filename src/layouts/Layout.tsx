@@ -29,10 +29,14 @@ const Layout: React.FC = () => {
           <div className="flex gap-10">
             <Popover>
               <PopoverTrigger>
-                <Avatar src={loginInfos.image !== "userPicture" ?
-                  loginInfos.image :
-                  'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSt2deTTpL5Z_Y-FBxr3DhfCdoDNHvUEmtvjQ&s'
-                } alt={loginInfos.name} />
+                <Avatar
+                  src={
+                    loginInfos.image !== 'userPicture'
+                      ? loginInfos.image
+                      : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSt2deTTpL5Z_Y-FBxr3DhfCdoDNHvUEmtvjQ&s'
+                  }
+                  alt={loginInfos.name}
+                />
               </PopoverTrigger>
               <PopoverContent className="w-fit min-w-[10rem] dark:bg-[#212121] dark:border dark:border-gray-600">
                 <div className="grid gap-4 text-center">
