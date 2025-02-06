@@ -3,6 +3,16 @@ import { DataTable } from '@/components/DataTable';
 import { NotAllowedPage } from '@/components/NotAllowedPage';
 import { TitlePage } from '@/components/TitlePage';
 import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select';
 import { LoginContext } from '@/context/LoginContext';
 import { useToast } from '@/hooks/use-toast';
 import { gameService } from '@/services/games';
@@ -16,10 +26,12 @@ import { GamesColumns } from './GamesColumns';
 export const Jogos = () => {
   const [gamesInfos, setGamesInfos] = useState<Game[] | []>([]);
   const [currentPage, setCurrentPage] = useState(1);
+  const [searchTerm, setSearchTerm] = useState('');
+  const [statusFilter, setStatusFilter] = useState('');
+  const itemsPerPage = 10;
   const { loginInfos } = LoginContext();
   const navigate = useNavigate();
   const { toast } = useToast();
-  const itemsPerPage = 10;
 
   const handleRegisterGame = () => {
     navigate('/cadastrar-jogos');
@@ -29,7 +41,14 @@ export const Jogos = () => {
     setCurrentPage(page);
   };
 
-  const paginatedGames = gamesInfos.slice(
+  const filteredGames = gamesInfos.filter((game) => {
+    return (
+      game.nome.toLowerCase().includes(searchTerm.toLowerCase()) &&
+      (statusFilter ? game.status === statusFilter : true)
+    );
+  });
+
+  const paginatedGames = filteredGames.slice(
     (currentPage - 1) * itemsPerPage,
     currentPage * itemsPerPage
   );
@@ -84,22 +103,49 @@ export const Jogos = () => {
       </div>
 
       <div className="flex flex-col gap-2 w-full">
-        <div className="flex justify-between items-center">
+        <div className="flex flex-wrap justify-between items-center gap-4 sm:gap-0">
           <TitlePage title="Jogos Cadastrados " />
-
           <Button
             onClick={handleRegisterGame}
             className="flex items-center gap-2 bg-blue-600 dark:bg-blue-600 hover:bg-blue-700 dark:hover:bg-blue-700 dark:text-white font-bold py-2 px-4 rounded"
           >
-            <Plus /> Cadastrar Jogo
+            <Plus />
+            Cadastrar Novo Jogo
           </Button>
         </div>
 
+        <div className="flex flex-wrap justify-between mb-4 gap-4 lg:gap-0">
+          <Input
+            type="text"
+            placeholder="Buscar pelo nome"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            className="w-full min-h-[3rem] border p-3 rounded  dark:text-white lg:w-[50%]"
+          />
+
+          <Select onValueChange={(value) => setStatusFilter(value)}>
+            <SelectTrigger className="w-full min-h-[3rem] dark:text-white lg:w-[20%]">
+              <SelectValue
+                placeholder="Todos os Status"
+                className="dark:text-white"
+              />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectGroup className="dark:text-white">
+                <SelectLabel>Status</SelectLabel>
+                <SelectItem value="Pendente">Pendente</SelectItem>
+                <SelectItem value="Progresso">Progresso</SelectItem>
+                <SelectItem value="Pausado">Pausado</SelectItem>
+                <SelectItem value="Completo">Completo</SelectItem>
+              </SelectGroup>
+            </SelectContent>
+          </Select>
+        </div>
+
         <DataTable data={paginatedGames} columns={GamesColumns()} />
-        {}
-        <div className="flex justify-center mt-4 gap-2">
+        <div className="flex justify-center mt-4">
           {Array.from(
-            { length: Math.ceil(gamesInfos.length / itemsPerPage) },
+            { length: Math.ceil(filteredGames.length / itemsPerPage) },
             (_, index) => (
               <Button
                 key={index}
