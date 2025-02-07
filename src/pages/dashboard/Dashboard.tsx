@@ -53,20 +53,21 @@ export const Dashboard = () => {
 
         <div>
           <img
-            src={loginInfos.image !== "userPicture" ?
-              loginInfos.image :
-              'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSt2deTTpL5Z_Y-FBxr3DhfCdoDNHvUEmtvjQ&s'
+            src={
+              loginInfos.image !== 'userPicture'
+                ? loginInfos.image
+                : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSt2deTTpL5Z_Y-FBxr3DhfCdoDNHvUEmtvjQ&s'
             }
             alt="profile"
             className="rounded-full size-28 shadow-lg"
-            loading='lazy'
+            loading="lazy"
           />
         </div>
       </div>
 
       <div className="flex flex-col text-center gap-6 w-full border-y-2 border-gray-300 dark:border-gray-700 py-6 lg:text-left">
         <h2 className="font-bold font-bebas text-[2rem] text-center lg:text-left">
-          Informações de status de jogos no sistema
+          Status dos Jogos Cadastrados
         </h2>
 
         <GamesByStatus
