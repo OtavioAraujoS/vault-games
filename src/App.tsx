@@ -6,6 +6,7 @@ import { Dashboard } from './pages/dashboard/Dashboard';
 import { CadastrarJogos } from './pages/jogos/cadastrarJogos/Page';
 import { EditarJogos } from './pages/jogos/editarJogos/Page';
 import { Jogos } from './pages/jogos/Page';
+import { JogosPorStatus } from './pages/jogosPorStatus/Page';
 import { CadastrarUsuario } from './pages/usuarios/cadastrarUsuario/Page';
 import { EditarUsuario } from './pages/usuarios/editarUsuario/Page';
 import { Usuarios } from './pages/usuarios/Page';
@@ -18,6 +19,7 @@ function App() {
         <Route element={<Layout />}>
           <Route path="dashboard" element={<Dashboard />} />
           <Route path="jogos" element={<Jogos />} />
+          <Route path="jogos-por-status" element={<JogosPorStatus />} />
           <Route path="usuarios" element={<Usuarios />} />
         </Route>
         <Route path="jogos/:id" element={<EditarJogos />} />
