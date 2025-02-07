@@ -6,7 +6,6 @@ import { DashboardInfos } from '@/types/Dashboard';
 import { mapError } from '@/utils/ErrosMap';
 import { useEffect, useState } from 'react';
 import { GamesByStatus } from './components/GamesByStatus';
-import { GamesByUser } from './components/GamesByUser';
 import { RankByHours } from './components/RankByHours';
 
 export const Dashboard = () => {
@@ -83,14 +82,6 @@ export const Dashboard = () => {
         <div>
           <RankByHours gameStatusDistribution={dashboardInfos?.gamesPerUser} />
         </div>
-      </div>
-
-      <div className="flex flex-col w-full">
-        <h2 className="font-bold font-bebas text-[2rem] text-center lg:text-left">
-          Jogos cadastrados por você
-        </h2>
-
-        <GamesByUser userId={loginInfos.id} />
       </div>
     </div>
   ) : (
