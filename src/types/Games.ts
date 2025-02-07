@@ -21,3 +21,10 @@ export interface CreateGame {
   status: GameStatus;
   userId: string;
 }
+
+export interface GamesByStatus {
+  Completo: Game[];
+  Progresso: Game[];
+  Pausado: Game[];
+  Pendente: Game[];
+}
