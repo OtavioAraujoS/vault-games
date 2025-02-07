@@ -5,6 +5,14 @@ import { TitlePage } from '@/components/TitlePage';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import {
+  Pagination,
+  PaginationContent,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
+} from '@/components/ui/pagination';
+import {
   Select,
   SelectContent,
   SelectGroup,
@@ -143,20 +151,35 @@ export const Jogos = () => {
         </div>
 
         <DataTable data={paginatedGames} columns={GamesColumns()} />
-        <div className="flex justify-center mt-4">
-          {Array.from(
-            { length: Math.ceil(filteredGames.length / itemsPerPage) },
-            (_, index) => (
-              <Button
-                key={index}
-                onClick={() => handlePageChange(index + 1)}
-                variant={currentPage === index + 1 ? 'default' : 'secondary'}
-              >
-                {index + 1}
-              </Button>
-            )
-          )}
-        </div>
+
+        <Pagination className="dark:text-white">
+          <PaginationContent>
+            <PaginationItem className="cursor-pointer">
+              <PaginationPrevious
+                onClick={() => handlePageChange(currentPage - 1)}
+              />
+            </PaginationItem>
+            {Array.from(
+              { length: Math.ceil(filteredGames.length / itemsPerPage) },
+              (_, index) => (
+                <PaginationItem key={index}>
+                  <PaginationLink
+                    onClick={() => handlePageChange(index + 1)}
+                    isActive={currentPage === index + 1}
+                    className="cursor-pointer"
+                  >
+                    {index + 1}
+                  </PaginationLink>
+                </PaginationItem>
+              )
+            )}
+            <PaginationItem className="cursor-pointer">
+              <PaginationNext
+                onClick={() => handlePageChange(currentPage + 1)}
+              />
+            </PaginationItem>
+          </PaginationContent>
+        </Pagination>
       </div>
     </div>
   ) : (
