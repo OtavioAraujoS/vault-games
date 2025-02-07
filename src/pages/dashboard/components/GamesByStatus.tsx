@@ -25,12 +25,12 @@ export const GamesByStatus = ({
   gameStatusDistribution,
 }: GamesByStatusProps) => {
   return gameStatusDistribution ? (
-    <div className="flex flex-wrap justify-between items-center gap-4">
+    <div className="flex flex-wrap justify-between items-center">
       {gameStatusDistribution.map((gameStatus, index) => {
         return (
           <div
             key={gameStatus.status}
-            className={`w-full lg:w-[20rem] flex flex-wrap items-center justify-around gap-4 lg:border-r-2 border-gray-300 dark:border-gray-700 p-2 ${
+            className={`w-full lg:w-[28rem] flex flex-wrap items-center justify-around gap-4 lg:border-r-2 border-gray-300 dark:border-gray-700 p-2 ${
               index === gameStatusDistribution.length - 1 ? 'border-r-0' : ''
             }`}
           >
