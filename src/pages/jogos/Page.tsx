@@ -156,7 +156,9 @@ export const Jogos = () => {
           <PaginationContent>
             <PaginationItem className="cursor-pointer">
               <PaginationPrevious
-                onClick={() => handlePageChange(currentPage - 1)}
+                onClick={() => {
+                  if (currentPage !== 1) handlePageChange(currentPage - 1);
+                }}
               />
             </PaginationItem>
             {Array.from(
@@ -175,7 +177,13 @@ export const Jogos = () => {
             )}
             <PaginationItem className="cursor-pointer">
               <PaginationNext
-                onClick={() => handlePageChange(currentPage + 1)}
+                onClick={() => {
+                  if (
+                    currentPage !==
+                    Math.ceil(filteredGames.length / itemsPerPage)
+                  )
+                    handlePageChange(currentPage + 1);
+                }}
               />
             </PaginationItem>
           </PaginationContent>
