@@ -1,4 +1,4 @@
-import { Gamepad, Home, User } from 'lucide-react';
+import { Gamepad, Gamepad2, Home, User } from 'lucide-react';
 
 import {
   Sidebar as ShadcnSidebar,
@@ -25,10 +25,15 @@ const items = [
     icon: Gamepad,
   },
   {
-    title: "Usuários",
-    url: "usuarios",
+    title: 'Jogos Por Status',
+    url: 'jogos-por-status',
+    icon: Gamepad2,
+  },
+  {
+    title: 'Usuários',
+    url: 'usuarios',
     icon: User,
-  }
+  },
 ];
 
 export function Sidebar() {
