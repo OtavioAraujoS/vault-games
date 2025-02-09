@@ -7,6 +7,7 @@ import { mapError } from '@/utils/ErrosMap';
 import { useEffect, useState } from 'react';
 import { GamesByStatus } from './components/GamesByStatus';
 import { RankByHours } from './components/RankByHours';
+import { RankByRegisteredGames } from './components/RankByRegisteredGames';
 
 export const Dashboard = () => {
   const [dashboardInfos, setDashboardInfos] = useState<DashboardInfos>();
@@ -88,6 +89,10 @@ export const Dashboard = () => {
         <h2 className="font-bold font-bebas text-[2rem] text-center lg:text-left">
           Usuários com mais jogos cadastrados
         </h2>
+
+        <RankByRegisteredGames
+          rankByRegisteredGames={dashboardInfos?.rankedUsersByRegisteredGames}
+        />
       </div>
 
       <div className="flex flex-col w-full">
