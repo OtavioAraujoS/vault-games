@@ -59,7 +59,11 @@ export const JogosPorStatus = () => {
       <TitlePage title="Jogos Por Status" />
 
       {Object.keys(gamesByStatus).length > 0 ? (
-        <Accordion type="single" collapsible className="w-full">
+        <Accordion
+          type="multiple"
+          className="w-full"
+          defaultValue={['Completo', 'Progresso', 'Pausado', 'Pendente']}
+        >
           {Object.keys(gamesByStatus)
             .filter(
               (status) =>
