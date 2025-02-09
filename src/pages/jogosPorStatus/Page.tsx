@@ -82,7 +82,7 @@ export const JogosPorStatus = () => {
             .map((status) => (
               <AccordionItem key={status} value={status}>
                 <AccordionTrigger>
-                  <h2 className="text-2xl font-bold mb-4 border-l-yellow-500 border-l-4 p-2 dark:text-white">
+                  <h2 className="text-2xl font-bold mb-4 border-l-red-500 border-l-4 p-2 dark:text-white">
                     {status}
                   </h2>
                 </AccordionTrigger>
