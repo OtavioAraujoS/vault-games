@@ -77,30 +77,18 @@ export const JogosPorStatus = () => {
                   </h2>
                 </AccordionTrigger>
                 <AccordionContent>
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-8 gap-4">
                     {gamesByStatus[status as keyof GamesByStatus].map(
                       (game) => (
                         <div
                           key={game._id}
-                          className="bg-white p-4 rounded-md shadow-md"
+                          className="bg-white dark:bg-[#212121] p-4 rounded-md shadow-md overflow-hidden h-full max-w-[18rem]"
                         >
                           <img
                             src={game.image}
                             alt={game.nome}
-                            className="w-full h-48 object-cover rounded-md"
+                            className="w-fit h-fit object-cover rounded-md"
                           />
-                          <h3 className="text-lg font-bold mt-4">
-                            {game.nome}
-                          </h3>
-                          <p className="text-sm text-gray-500 mt-2">
-                            {game.description}
-                          </p>
-                          <p className="text-sm text-gray-500 mt-2">
-                            {game.hours} horas jogadas
-                          </p>
-                          <p className="text-sm text-gray-500 mt-2">
-                            {game.review}
-                          </p>
                         </div>
                       )
                     )}
