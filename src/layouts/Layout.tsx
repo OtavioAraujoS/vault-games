@@ -18,7 +18,7 @@ const Layout: React.FC = () => {
 
   const handleLogOut = () => {
     logout();
-    navigate('/');
+    navigate('/login');
   };
   return (
     <SidebarProvider>
