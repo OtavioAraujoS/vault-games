@@ -20,27 +20,27 @@ export const Home = () => {
       <div ref={homeRef} className="flex flex-col items-center gap-8 h-full">
         <header className="w-[80%] min-h-[8vh] flex justify-between items-center p-4 mt-4">
           <div className="flex items-center">
-            <h1 className="font-bebas tracking-wider lg:text-2xl text-xl text-zinc-900">
+            <h1 className="font-bebas tracking-wider text-xl text-zinc-900 lg:text-2xl">
               Vault Games
             </h1>
           </div>
 
-          <div className="flex items-center">
+          <div className="items-center hidden lg:flex">
             <ul className="flex gap-6">
               <li
-                className="font-bold text-zinc-400 tracking-tight cursor-pointer hover:text-zinc-600 transition duration-300"
+                className="text-base lg:text-lg font-bold text-zinc-400 tracking-tight cursor-pointer hover:text-zinc-600 transition duration-300"
                 onClick={() => scrollToSection(homeRef)}
               >
                 Home
               </li>
               <li
-                className="font-bold text-zinc-400 tracking-tight cursor-pointer hover:text-zinc-600 transition duration-300"
+                className="text-base lg:text-lg font-bold text-zinc-400 tracking-tight cursor-pointer hover:text-zinc-600 transition duration-300"
                 onClick={() => scrollToSection(aboutRef)}
               >
                 About
               </li>
               <li
-                className="font-bold text-zinc-400 tracking-tight cursor-pointer hover:text-zinc-600 transition duration-300"
+                className="text-base lg:text-lg font-bold text-zinc-400 tracking-tight cursor-pointer hover:text-zinc-600 transition duration-300"
                 onClick={() => scrollToSection(contactRef)}
               >
                 Contact
@@ -50,7 +50,7 @@ export const Home = () => {
 
           <div>
             <button
-              className="w-[8rem] h-[2.5rem] bg-black text-white rounded-3xl"
+              className="w-[7rem] h-[2rem] lg:w-[8rem] lg:h-[2.5rem] bg-black text-white text-[0.8rem] lg:text-[1rem] rounded-3xl"
               onClick={redirectToLogin}
             >
               Login
@@ -58,16 +58,16 @@ export const Home = () => {
           </div>
         </header>
         <body className="flex flex-col justify-center items-center gap-2 min-h-[90vh]">
-          <h1 className="max-w-[80rem] text-[3.8rem] font-bold text-center">
+          <h1 className="max-w-[80rem] text-[1.8rem] sm:text-[2.2rem] md:text-[2.8rem] lg:text-[3.8rem] font-bold text-center">
             Vault Games, o melhor site para gerenciar seus jogos com maestria
           </h1>
-          <p className="max-w-[70rem] text-[1.5rem] text-zinc-500 text-center">
+          <p className="max-w-[70rem] text-[1rem] md:text-[1.2rem] lg:text-[1.5rem] text-zinc-500 text-center">
             Controle suas coleções, acompanhe seu progresso e descubra o que
             seus amigos estão jogando — tudo em um só lugar!
           </p>
 
           <button
-            className="w-[10rem] h-[2.8rem] bg-black text-white rounded-3xl mt-4"
+            className="w-[8rem] h-[2.4rem] lg:w-[10rem] lg:h-[2.8rem] bg-black text-white text-[0.8rem] lg:text-[1rem] rounded-3xl mt-4"
             onClick={redirectToLogin}
           >
             Comece agora
