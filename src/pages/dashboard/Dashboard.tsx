@@ -8,6 +8,7 @@ import { useEffect, useState } from 'react';
 import { GamesByStatus } from './components/GamesByStatus';
 import { RankByHours } from './components/RankByHours';
 import { RankByRegisteredGames } from './components/RankByRegisteredGames';
+import { UsersPlaying } from './components/UsersPlaying';
 
 export const Dashboard = () => {
   const [dashboardInfos, setDashboardInfos] = useState<DashboardInfos>();
@@ -99,6 +100,10 @@ export const Dashboard = () => {
         <h2 className="font-bold font-bebas text-[2rem] text-center lg:text-left">
           Usuários estão jogando
         </h2>
+
+        <UsersPlaying
+          currentPlayingGames={dashboardInfos?.currentPlayingGames}
+        />
       </div>
     </div>
   ) : (
