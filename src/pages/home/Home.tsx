@@ -21,7 +21,8 @@ export const Home = () => {
           homeRef={homeRef}
           redirectToLogin={redirectToLogin}
         />
-        <div className="flex flex-col justify-center items-center gap-2 min-h-[90vh]">
+
+        <div className="flex flex-col justify-center items-center gap-2 min-h-[90vh] p-4 sm:p-8">
           <h1 className="max-w-[80rem] text-[1.8rem] sm:text-[2.2rem] md:text-[2.8rem] lg:text-[3.8rem] font-bold text-center">
             Vault Games, o melhor site para gerenciar seus jogos com maestria
           </h1>
@@ -36,6 +37,30 @@ export const Home = () => {
           >
             Comece agora
           </button>
+
+          <div className="flex flex-wrap gap-4 mt-8 mb-8">
+            <div className="w-full sm:w-[calc(50%-1rem)] lg:w-[calc(33.33%-1rem)] h-[15rem] flex items-center justify-center bg-yellow-500 rounded-3xl p-8">
+              <img
+                src="/falloutGuy2.webp"
+                alt="Steam"
+                className="w-full h-full object-contain rounded-3xl"
+              />
+            </div>
+            <div className="w-full sm:w-[calc(50%-1rem)] lg:w-[calc(33.33%-1rem)] h-[15rem] flex items-center justify-center bg-green-500 rounded-3xl p-8">
+              <img
+                src="/falloutGuy1.webp"
+                alt="Steam"
+                className="w-full h-full object-contain rounded-3xl"
+              />
+            </div>
+            <div className="w-full sm:w-[calc(50%-1rem)] lg:w-[calc(33.33%-1rem)] h-[15rem] flex items-center justify-center bg-red-500 rounded-3xl p-8">
+              <img
+                src="/falloutGuy3.webp"
+                alt="Steam"
+                className="w-full h-full object-contain rounded-3xl"
+              />
+            </div>
+          </div>
         </div>
       </div>
 
