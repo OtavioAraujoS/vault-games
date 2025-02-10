@@ -1,4 +1,4 @@
-import { GameStatus } from './Games';
+import { Game, GameStatus } from './Games';
 
 export interface GamesPerUser {
   userId: string;
@@ -20,10 +20,18 @@ export interface RankedUsersByRegisteredGames {
   userImage: string;
 }
 
+export interface CurrentPlayingGames {
+  userId: string;
+  userImage: string;
+  userName: string;
+  game: Game;
+}
+
 export interface DashboardInfos {
   totalUsers: number;
   totalGames: number;
   gamesPerUser: GamesPerUser[];
   gameStatusDistribution: GameStatusDistribution[];
   rankedUsersByRegisteredGames: RankedUsersByRegisteredGames[];
+  currentPlayingGames: CurrentPlayingGames[];
 }
