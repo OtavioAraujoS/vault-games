@@ -3,6 +3,7 @@ import { NotAllowedPage } from './components/NotAllowedPage';
 import Layout from './layouts/Layout';
 import { Login } from './pages/auth/Login';
 import { Dashboard } from './pages/dashboard/Dashboard';
+import { Home } from './pages/home/Home';
 import { CadastrarJogos } from './pages/jogos/cadastrarJogos/Page';
 import { EditarJogos } from './pages/jogos/editarJogos/Page';
 import { Jogos } from './pages/jogos/Page';
@@ -15,7 +16,8 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route index element={<Login />} />
+        <Route index path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
         <Route element={<Layout />}>
           <Route path="dashboard" element={<Dashboard />} />
           <Route path="jogos" element={<Jogos />} />
