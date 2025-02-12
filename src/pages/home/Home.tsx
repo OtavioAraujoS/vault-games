@@ -1,5 +1,6 @@
 import { useRef } from 'react';
 import { useNavigate } from 'react-router';
+import { Features } from './components/Features';
 import { Header } from './components/Header';
 
 export const Home = () => {
@@ -64,11 +65,8 @@ export const Home = () => {
         </div>
       </div>
 
-      <div
-        ref={aboutRef}
-        className="h-full min-h-screen flex flex-col bg-black"
-      >
-        About
+      <div ref={aboutRef}>
+        <Features />
       </div>
       <div
         ref={contactRef}
