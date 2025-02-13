@@ -41,7 +41,7 @@ export const Header = ({
             className="text-base lg:text-lg font-bold text-zinc-400 tracking-tight cursor-pointer hover:text-zinc-600 transition duration-300"
             onClick={() => scrollToSection(contactRef)}
           >
-            Contact
+            Descubra
           </li>
         </ul>
       </div>
