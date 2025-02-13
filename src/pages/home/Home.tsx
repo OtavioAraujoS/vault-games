@@ -2,6 +2,7 @@ import { useRef } from 'react';
 import { useNavigate } from 'react-router';
 import { Features } from './components/Features';
 import { Header } from './components/Header';
+import { Ideas } from './components/Ideas';
 
 export const Home = () => {
   const navigate = useNavigate();
@@ -70,9 +71,8 @@ export const Home = () => {
       </div>
       <div
         ref={contactRef}
-        className="h-full min-h-screen flex flex-col bg-white"
       >
-        Contact
+        <Ideas />
       </div>
     </div>
   );
