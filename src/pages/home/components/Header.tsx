@@ -29,7 +29,7 @@ export const Header = ({
             className="text-base lg:text-lg font-bold text-zinc-400 tracking-tight cursor-pointer hover:text-zinc-600 transition duration-300"
             onClick={() => scrollToSection(homeRef)}
           >
-            ínicio
+            Início
           </li>
           <li
             className="text-base lg:text-lg font-bold text-zinc-400 tracking-tight cursor-pointer hover:text-zinc-600 transition duration-300"
