@@ -1,8 +1,32 @@
+import { useToast } from '@/hooks/use-toast';
+import { gameService } from '@/services/games';
+import { Game } from '@/types/Games';
 import { Undo2 } from 'lucide-react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router';
 import { Form } from './components/Form';
 
 export const CadastrarJogos = () => {
+  const [gamesList, setGamesList] = useState<Game[]>([]);
+  const { toast } = useToast();
+
+  const getGames = async () => {
+    try {
+      const response = await gameService.getGames();
+      setGamesList(response);
+    } catch {
+      toast({
+        title: 'Erro ao buscar jogos',
+        variant: 'destructive',
+        duration: 4000,
+      });
+    }
+  };
+
+  useEffect(() => {
+    getGames();
+  }, []);
+
   return (
     <div className="grid min-h-svh lg:grid-cols-2">
       <div className="flex flex-col gap-12 p-6 md:p-10 dark:bg-[#181818]">
@@ -18,7 +42,7 @@ export const CadastrarJogos = () => {
           </Link>
         </div>
         <div className="flex w-full">
-          <Form />
+          <Form gameList={gamesList} />
         </div>
       </div>
       <div className="relative hidden bg-muted lg:block">
@@ -26,7 +50,7 @@ export const CadastrarJogos = () => {
           src="/formWallpaper.webp"
           alt="Image"
           className="absolute inset-0 h-full w-full object-cover"
-          loading='lazy'
+          loading="lazy"
         />
       </div>
     </div>
