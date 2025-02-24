@@ -41,11 +41,15 @@ export const Combobox = <T,>({
           variant="outline"
           role="combobox"
           aria-expanded={open}
-          className="w-[200px] sm:w-full justify-between dark:bg-[#181818] dark:text-zinc-400"
+          className="w-full justify-between dark:bg-[#181818] dark:text-zinc-400"
         >
-          {value
-            ? String(items.find((item) => item[valueKey] === value)?.[labelKey])
-            : placeholder}
+          <h6 className="dark:text-white text-xs md:text-sm lg:text-base">
+            {value
+              ? String(
+                  items.find((item) => item[valueKey] === value)?.[labelKey]
+                )
+              : placeholder}
+          </h6>
           <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
         </Button>
       </PopoverTrigger>
