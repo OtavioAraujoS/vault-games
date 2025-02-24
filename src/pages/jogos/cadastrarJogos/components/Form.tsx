@@ -1,3 +1,4 @@
+import { Combobox } from '@/components/Combobox';
 import { Button } from '@/components/ui/button';
 import {
   FormControl,
@@ -8,6 +9,7 @@ import {
   Form as ShadcnForm,
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
 import {
   Select,
   SelectContent,
@@ -18,13 +20,18 @@ import {
 import { LoginContext } from '@/context/LoginContext';
 import { useToast } from '@/hooks/use-toast';
 import { gameService } from '@/services/games';
+import { Game } from '@/types/Games';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router';
 import { z } from 'zod';
 import { registerGameSchema } from './FormSchema';
 
-export const Form = () => {
+interface FormProps {
+  gameList: Game[];
+}
+
+export const Form = ({ gameList }: FormProps) => {
   const form = useForm<z.infer<typeof registerGameSchema>>({
     resolver: zodResolver(registerGameSchema),
     defaultValues: {
@@ -74,7 +81,21 @@ export const Form = () => {
         </div>
 
         <hr className="w-full my-4 border-[#c4c4c4]" />
+
         <div className="flex flex-col gap-6">
+          <div className="flex flex-col gap-3 flex-wrap">
+            <Label className="dark:text-white text-xs md:text-sm lg:text-base">
+              Deseja basear o cadastro em algum jogo existente ?
+            </Label>
+
+            <Combobox
+              items={gameList}
+              labelKey="nome"
+              valueKey="_id"
+              placeholder="Selecione o jogo base pelo nome"
+            />
+          </div>
+
           <FormField
             control={form.control}
             name="nome"
@@ -178,7 +199,7 @@ export const Form = () => {
                   defaultValue={field.value}
                 >
                   <FormControl>
-                    <SelectTrigger>
+                    <SelectTrigger className="text-[0.6rem] md:text-sm lg:text-base text-red-500">
                       <SelectValue placeholder="Selecione o status do andamento do jogo" />
                     </SelectTrigger>
                   </FormControl>
@@ -198,7 +219,9 @@ export const Form = () => {
             type="submit"
             className="mt-4 w-full bg-green-600 text-white dark:text-white dark:bg-green-500 dark:hover:bg-green-700 hover:bg-green-700"
           >
-            Cadastrar
+            <h6 className="font-bold tracking-wide text-xs md:text-sm lg:text-base">
+              Cadastrar
+            </h6>
           </Button>
         </div>
       </form>
