@@ -4,6 +4,11 @@ import { api as apiService, ApiService, defaultUrl } from './api';
 class GameService {
   constructor(private readonly api: ApiService) { }
 
+  public getGames = async (): Promise<Game[]> => {
+    const response = await this.api.get(`${defaultUrl}/games`);
+    return response as Game[];
+  };
+
   public getGamesByUser = async (id: string): Promise<Game[]> => {
     const response = await this.api.get(`${defaultUrl}/games/user/${id}`);
     return response as Game[];
