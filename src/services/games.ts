@@ -20,11 +20,12 @@ class GameService {
     return response as Game;
   };
 
-  public createGame = async (
-    game: CreateGame
-  ): Promise<Game[] | Partial<Error> | undefined> => {
+  public createGame = async (game: CreateGame): Promise<Partial<Error>> => {
     try {
       await this.api.post(`${defaultUrl}/games`, game);
+      return {
+        statusCode: 201,
+      };
     } catch (error) {
       const { message, statusCode } = error as Error;
       return {
@@ -32,7 +33,6 @@ class GameService {
         message,
       };
     }
-    return undefined;
   };
 
   public updateGame = async (id: string, game: CreateGame) => {
