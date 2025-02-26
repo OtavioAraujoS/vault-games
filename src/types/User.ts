@@ -1,5 +1,6 @@
 export interface User {
   id: string;
+  _id?: string;
   name: string;
   image: string;
 }
@@ -17,6 +18,7 @@ export interface AuthContextType {
 
 export interface UsersInfo {
   _id: string;
+  id: string;
   nome: string;
   password: string;
   createdAt: string;
