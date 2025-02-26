@@ -37,7 +37,7 @@ export const LoginForm = () => {
 
       setLoginInfos({
         name: response.nome,
-        id: response._id,
+        id: response._id || response.id,
         image: response.picture,
       });
 
