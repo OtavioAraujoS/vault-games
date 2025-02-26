@@ -1,8 +1,9 @@
+import { Error } from '@/types/Error';
 import { CreateGame, Game } from '@/types/Games';
 import { api as apiService, ApiService, defaultUrl } from './api';
 
 class GameService {
-  constructor(private readonly api: ApiService) { }
+  constructor(private readonly api: ApiService) {}
 
   public getGames = async (): Promise<Game[]> => {
     const response = await this.api.get(`${defaultUrl}/games`);
@@ -19,8 +20,19 @@ class GameService {
     return response as Game;
   };
 
-  public createGame = async (game: CreateGame) => {
-    await this.api.post(`${defaultUrl}/games`, game);
+  public createGame = async (
+    game: CreateGame
+  ): Promise<Game[] | Partial<Error> | undefined> => {
+    try {
+      await this.api.post(`${defaultUrl}/games`, game);
+    } catch (error) {
+      const { message, statusCode } = error as Error;
+      return {
+        statusCode,
+        message,
+      };
+    }
+    return undefined;
   };
 
   public updateGame = async (id: string, game: CreateGame) => {
