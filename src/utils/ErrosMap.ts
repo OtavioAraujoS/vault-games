@@ -12,7 +12,6 @@ export function mapError(errorCode: string): string {
   const lowerCaseErrorCode = errorCode.toLowerCase();
   for (const key of Object.keys(errorMessages)) {
     if (lowerCaseErrorCode.includes(key.toLowerCase())) {
-      console.log(`Match found: ${key}`);
       const errorMessage = errorMessages[key];
       if (typeof errorMessage === 'string') {
         return errorMessage;
