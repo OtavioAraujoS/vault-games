@@ -66,7 +66,7 @@ export const Form = ({ gameList }: FormProps) => {
           userId: loginInfos.id || loginInfos._id || '',
         });
 
-        if (!!response.statusCode || response.statusCode !== 201) {
+        if (response?.statusCode !== 201) {
           throw new Error(mapError(response?.message ?? 'Erro desconhecido'));
         }
 
