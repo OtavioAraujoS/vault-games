@@ -1,4 +1,4 @@
-import { Combobox } from '@/components/Combobox';
+'use client';
 import { Button } from '@/components/ui/button';
 import {
   FormControl,
@@ -9,7 +9,6 @@ import {
   Form as ShadcnForm,
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
 import {
   Select,
   SelectContent,
@@ -21,10 +20,13 @@ import { LoginContext } from '@/context/LoginContext';
 import { useToast } from '@/hooks/use-toast';
 import { gameService } from '@/services/games';
 import { Game } from '@/types/Games';
+import { mapError } from '@/utils/ErrosMap';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router';
 import { z } from 'zod';
+import { FillFieldsByPreviousGame } from './FillFieldsByPreviousGame';
 import { registerGameSchema } from './FormSchema';
 
 interface FormProps {
@@ -32,6 +34,7 @@ interface FormProps {
 }
 
 export const Form = ({ gameList }: FormProps) => {
+  const [loading, setLoading] = useState<boolean>(false);
   const form = useForm<z.infer<typeof registerGameSchema>>({
     resolver: zodResolver(registerGameSchema),
     defaultValues: {
@@ -40,19 +43,32 @@ export const Form = ({ gameList }: FormProps) => {
   });
   const {
     formState: { errors },
+    setValue,
   } = form;
   const { loginInfos } = LoginContext();
   const { toast } = useToast();
   const navigate = useNavigate();
 
+  const handleFillForm = (game: Game) => {
+    if (!game) return;
+    setValue('nome', game.nome);
+    setValue('description', game.description);
+    setValue('image', game.image);
+  };
+
   const handleSubmit = form.handleSubmit(
     async (data: z.infer<typeof registerGameSchema>) => {
       try {
-        await gameService.createGame({
+        setLoading(true);
+        const response = await gameService.createGame({
           ...data,
           hours: Number(data.hours),
-          userId: loginInfos.id,
+          userId: loginInfos.id || loginInfos._id || '',
         });
+
+        if (!!response.statusCode || response.statusCode !== 201) {
+          throw new Error(mapError(response?.message ?? 'Erro desconhecido'));
+        }
 
         toast({
           title: 'Jogo cadastrado com sucesso',
@@ -60,12 +76,14 @@ export const Form = ({ gameList }: FormProps) => {
           duration: 3000,
         });
         navigate('/jogos');
-      } catch {
+        setLoading(false);
+      } catch (error) {
         toast({
-          title: 'Erro ao cadastrar jogo',
+          title: String(error),
           variant: 'destructive',
           duration: 4000,
         });
+        setLoading(false);
       }
     }
   );
@@ -83,18 +101,11 @@ export const Form = ({ gameList }: FormProps) => {
         <hr className="w-full my-4 border-[#c4c4c4]" />
 
         <div className="flex flex-col gap-6">
-          <div className="flex flex-col gap-3 flex-wrap">
-            <Label className="dark:text-white text-xs md:text-sm lg:text-base">
-              Deseja basear o cadastro em algum jogo existente ?
-            </Label>
-
-            <Combobox
-              items={gameList}
-              labelKey="nome"
-              valueKey="_id"
-              placeholder="Selecione o jogo base pelo nome"
-            />
-          </div>
+          <FillFieldsByPreviousGame
+            gameList={gameList}
+            handleFillForm={handleFillForm}
+            label="Deseja basear o cadastro em algum jogo existente ?"
+          />
 
           <FormField
             control={form.control}
@@ -199,7 +210,7 @@ export const Form = ({ gameList }: FormProps) => {
                   defaultValue={field.value}
                 >
                   <FormControl>
-                    <SelectTrigger className="text-[0.6rem] md:text-sm lg:text-base text-red-500">
+                    <SelectTrigger className="text-[0.6rem] md:text-sm lg:text-base">
                       <SelectValue placeholder="Selecione o status do andamento do jogo" />
                     </SelectTrigger>
                   </FormControl>
@@ -216,6 +227,7 @@ export const Form = ({ gameList }: FormProps) => {
           />
 
           <Button
+            disabled={loading}
             type="submit"
             className="mt-4 w-full bg-green-600 text-white dark:text-white dark:bg-green-500 dark:hover:bg-green-700 hover:bg-green-700"
           >
