@@ -14,6 +14,7 @@ export const LoginContext = create<LoginState, [['zustand/persist', unknown]]>(
     (set, get) => ({
       loginInfos: {
         id: '',
+        _id: '',
         name: '',
         image: '',
       },
