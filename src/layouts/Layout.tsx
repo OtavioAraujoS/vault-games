@@ -20,6 +20,7 @@ const Layout: React.FC = () => {
     logout();
     navigate('/login');
   };
+
   return (
     <SidebarProvider>
       <Sidebar />
@@ -45,7 +46,7 @@ const Layout: React.FC = () => {
                   </h2>
                   <ul className="flex flex-col gap-2">
                     <a
-                      href="/profile"
+                      href={`/profile/${loginInfos.id}`}
                       className="flex gap-4 hover:text-blue-500"
                     >
                       <User size={20} />
