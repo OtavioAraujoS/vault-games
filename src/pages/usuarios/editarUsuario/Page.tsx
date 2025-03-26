@@ -11,6 +11,7 @@ import { Form } from './compoents/Form';
 export const EditarUsuario = () => {
   const [userInfos, setUserInfos] = useState<UsersInfo>({
     _id: '',
+    id: '',
     nome: '',
     picture: '',
     createdAt: '',
@@ -64,7 +65,7 @@ export const EditarUsuario = () => {
           src="/updateUserFormWallpaper.webp"
           alt="Image"
           className="absolute inset-0 h-full w-full object-cover"
-          loading='lazy'
+          loading="lazy"
         />
       </div>
     </div>
