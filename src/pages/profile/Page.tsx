@@ -10,7 +10,11 @@ export default function Profile() {
       </h1>
 
       <div className="flex flex-col gap-4">
-        <ProfileInfos name={loginInfos.name} picture={loginInfos.image} />
+        <ProfileInfos
+          name={loginInfos.name}
+          picture={loginInfos.image}
+          userId={loginInfos.id}
+        />
       </div>
     </div>
   );
