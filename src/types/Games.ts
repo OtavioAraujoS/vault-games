@@ -28,3 +28,10 @@ export interface GamesByStatus {
   Pausado: Game[];
   Pendente: Game[];
 }
+
+export interface UserGamesByStatus {
+  Completo: number;
+  Progresso: number;
+  Pausado: number;
+  Pendente: number;
+}
