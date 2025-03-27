@@ -1,3 +1,4 @@
+import { Separator } from '@/components/ui/separator';
 import { LoginContext } from '@/context/LoginContext';
 import ProfileInfos from './components/ProfileInfos';
 
@@ -9,12 +10,14 @@ export default function Profile() {
         Meu Perfil
       </h1>
 
-      <div className="flex flex-col gap-4">
+      <div className="flex flex-col p-4 gap-4 rounded-lg border-2 border-lime-600 bg-[#FAFAFA] dark:bg-[#212121]">
         <ProfileInfos
           name={loginInfos.name}
           picture={loginInfos.image}
           userId={loginInfos.id}
         />
+
+        <Separator className="bg-lime-600 dark:bg-lime-600" />
       </div>
     </div>
   );

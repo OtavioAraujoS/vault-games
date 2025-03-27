@@ -19,7 +19,7 @@ export default function ProfileInfos({
     router(`/usuarios/${userId}`);
   };
   return (
-    <div className="flex justify-between items-center gap-4 p-9 rounded-lg border-2 border-lime-600 bg-[#FAFAFA] dark:bg-[#212121]">
+    <div className="flex justify-between items-center gap-4 p-9">
       <div className="flex items-center gap-8">
         <img
           src={picture}
