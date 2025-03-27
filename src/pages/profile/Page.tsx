@@ -1,5 +1,6 @@
 import { Separator } from '@/components/ui/separator';
 import { LoginContext } from '@/context/LoginContext';
+import GameDistribuition from './components/GameDistribuition';
 import LastGamesUpdated from './components/LastGamesUpdated';
 import ProfileInfos from './components/ProfileInfos';
 
@@ -20,8 +21,10 @@ export default function Profile() {
 
         <Separator className="bg-lime-600 dark:bg-lime-600" />
 
-        <div className="flex justify-between items-center gap-4">
+        <div className="w-full flex flex-wrap justify-evenly items-center gap-4">
           <LastGamesUpdated />
+
+          <GameDistribuition />
         </div>
       </div>
     </div>
