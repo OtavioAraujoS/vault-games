@@ -55,7 +55,7 @@ export default function GameDistribuition() {
         const mostPlayed = sortedGames[0];
         const leastPlayed = sortedGames[sortedGames.length - 1];
 
-        let message = `Você tem jogado muito jogos na categoria: "${mostPlayed.title}". `;
+        let message = `Você possui muitos jogos na categoria: "${mostPlayed.title}". `;
         if (mostPlayed.title === 'Pendente') {
           message += 'Tente focar em completar mais jogos!';
         } else if (leastPlayed.title === 'Completo') {
