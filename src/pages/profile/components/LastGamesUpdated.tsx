@@ -1,4 +1,3 @@
-'use client';
 import { Card, CardContent } from '@/components/ui/card';
 import {
   Carousel,
@@ -17,8 +16,8 @@ import { useParams } from 'react-router';
 export default function LastGamesUpdated() {
   const [games, setGames] = useState<Game[]>();
   const [api, setApi] = useState<CarouselApi>();
-  const [current, setCurrent] = useState(0);
-  const [count, setCount] = useState(0);
+  const [, setCurrent] = useState(0);
+  const [, setCount] = useState(0);
   const { id } = useParams();
   const { toast } = useToast();
 
@@ -60,7 +59,7 @@ export default function LastGamesUpdated() {
       </h1>
       <Carousel
         setApi={setApi}
-        className="w-full max-w-[8rem] sm:max-w-[10rem] md:max-w-[16rem] lg:max-w-xs"
+        className="w-full h-full max-w-[10rem] sm:max-w-[12rem] md:max-w-[18rem] lg:max-w-[22rem]"
       >
         <CarouselContent>
           {games?.map((game, index) => (
@@ -83,11 +82,6 @@ export default function LastGamesUpdated() {
         <CarouselPrevious className="dark:text-white hidden md:flex" />
         <CarouselNext className="dark:text-white hidden md:flex" />
       </Carousel>
-      <div className="py-2 text-center text-base lg:text-lg text-muted-foreground font-oswald dark:text-white">
-        <h1>
-          Jogo {current} de {count}
-        </h1>
-      </div>
     </div>
   );
 }
