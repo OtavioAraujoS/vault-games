@@ -1,5 +1,5 @@
 import { Error } from '@/types/Error';
-import { CreateGame, Game } from '@/types/Games';
+import { CreateGame, Game, UserGamesByStatus } from '@/types/Games';
 import { api as apiService, ApiService, defaultUrl } from './api';
 
 class GameService {
@@ -25,6 +25,15 @@ class GameService {
       `${defaultUrl}/games/last-updated/user/${id}`
     );
     return response as Game[];
+  };
+
+  public getGameDistribuitionByUserId = async (
+    id: string
+  ): Promise<UserGamesByStatus> => {
+    const response = await this.api.get(
+      `${defaultUrl}/games/distribution/user/${id}`
+    );
+    return response as UserGamesByStatus;
   };
 
   public createGame = async (game: CreateGame): Promise<Partial<Error>> => {
