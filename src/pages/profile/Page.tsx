@@ -1,5 +1,6 @@
 import { Separator } from '@/components/ui/separator';
 import { LoginContext } from '@/context/LoginContext';
+import LastGamesUpdated from './components/LastGamesUpdated';
 import ProfileInfos from './components/ProfileInfos';
 
 export default function Profile() {
@@ -10,7 +11,7 @@ export default function Profile() {
         Meu Perfil
       </h1>
 
-      <div className="flex flex-col p-4 gap-4 rounded-lg border-2 border-lime-600 bg-[#FAFAFA] dark:bg-[#212121]">
+      <div className="flex flex-col p-4 gap-6 rounded-lg border-2 border-lime-600 bg-[#FAFAFA] dark:bg-[#212121]">
         <ProfileInfos
           name={loginInfos.name}
           picture={loginInfos.image}
@@ -18,6 +19,10 @@ export default function Profile() {
         />
 
         <Separator className="bg-lime-600 dark:bg-lime-600" />
+
+        <div className="flex justify-between items-center gap-4">
+          <LastGamesUpdated />
+        </div>
       </div>
     </div>
   );
