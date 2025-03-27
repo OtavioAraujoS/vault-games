@@ -1,4 +1,6 @@
+'use client';
 import { Button } from '@/components/ui/button';
+import { LoginContext } from '@/context/LoginContext';
 import { Pencil } from 'lucide-react';
 import { useNavigate } from 'react-router';
 
@@ -13,6 +15,7 @@ export default function ProfileInfos({
   picture,
   userId,
 }: ProfileInfosProps) {
+  const { loginInfos } = LoginContext();
   const router = useNavigate();
 
   const handleEditProfile = () => {
@@ -34,6 +37,7 @@ export default function ProfileInfos({
       </div>
       <Button
         className="w-fit h-10 p-4 rounded-2xl bg-lime-600 hover:bg-lime-700 text-white dark:text-zinc-900 border-2 border-lime-600 dark:border-zinc-900 hidden md:flex"
+        disabled={loginInfos.id !== userId}
         onClick={handleEditProfile}
       >
         Editar Perfil <Pencil />
