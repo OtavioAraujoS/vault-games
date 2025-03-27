@@ -20,6 +20,13 @@ class GameService {
     return response as Game;
   };
 
+  public getLastUpdatedGameByUserId = async (id: string): Promise<Game[]> => {
+    const response = await this.api.get(
+      `${defaultUrl}/games/last-updated/user/${id}`
+    );
+    return response as Game[];
+  };
+
   public createGame = async (game: CreateGame): Promise<Partial<Error>> => {
     try {
       await this.api.post(`${defaultUrl}/games`, game);
