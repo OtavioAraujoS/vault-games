@@ -28,8 +28,12 @@ export const Usuarios = () => {
     }
   };
 
-  const redirectUser = (id: string) => {
+  const redirectUserToEditPage = (id: string) => {
     navigate(`/usuarios/${id}`);
+  };
+
+  const redirectUserToUserPage = (id: string) => {
+    navigate(`/profile/${id}`);
   };
 
   useEffect(() => {
@@ -66,7 +70,8 @@ export const Usuarios = () => {
                     : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSt2deTTpL5Z_Y-FBxr3DhfCdoDNHvUEmtvjQ&s'
                 }
                 alt={user.nome}
-                className="size-14 md:size-20 lg:size-24 rounded-full"
+                onClick={() => redirectUserToUserPage(user._id)}
+                className="size-14 md:size-20 lg:size-24 rounded-full cursor-pointer"
               />
               <div className="flex flex-col gap-1 items-center text-center">
                 <h2 className="lg:text-[1.4rem] tracking-wider font-bebas dark:text-white">
@@ -79,7 +84,7 @@ export const Usuarios = () => {
               <Button
                 disabled={loginInfos.id !== user._id}
                 className="w-full text-[0.6rem] md:text-[0.8rem] lg:text-[1rem] h-10 bg-blue-600 text-white dark:text-white dark:bg-blue-600 dark:hover:bg-blue-700 hover:bg-blue-700"
-                onClick={() => redirectUser(user._id)}
+                onClick={() => redirectUserToEditPage(user._id)}
               >
                 <Pencil /> Editar Usuário
               </Button>
