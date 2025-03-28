@@ -76,7 +76,7 @@ export default function GameDistribuition() {
     getLastUpdatedGames();
   }, [id, setGameDistribution]);
   return (
-    <div className="flex flex-col items-center gap-4">
+    <div className="flex flex-col items-center gap-4 md:ml-8">
       <h1 className="dark:text-white font-bebas text-center text-sm sm:text-lg md:text-xl lg:text-2xl">
         Distribuição De Jogos por Status
       </h1>
