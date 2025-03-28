@@ -24,12 +24,11 @@ export const Dashboard = () => {
 
         const response = await dashboardService.getDashboardInfos();
         setDashboardInfos(response);
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      } catch (error: any) {
+      } catch (error) {
         toast({
           title: 'Erro ao buscar informações do dashboard',
           description:
-            mapError(error) ||
+            mapError(String(error)) ||
             'Não foi possível buscar as informações do dashboard',
           variant: 'destructive',
         });
@@ -38,7 +37,6 @@ export const Dashboard = () => {
 
     handleGetDashboardInfos();
   }, []);
-
   return loginInfos ? (
     <div className="flex flex-col gap-8 dark:text-white h-full min-h-screen p-12">
       <div className="flex flex-wrap-reverse justify-center items-center gap-6 pb-4 lg:justify-between lg:gap-0">
@@ -70,7 +68,6 @@ export const Dashboard = () => {
         <h2 className="font-bold font-bebas text-[2rem] text-center lg:text-left">
           Status dos Jogos Cadastrados no Sistema
         </h2>
-
         <GamesByStatus
           gameStatusDistribution={dashboardInfos?.gameStatusDistribution}
         />
