@@ -11,11 +11,9 @@ import {
   ChartTooltip,
   ChartTooltipContent,
 } from '@/components/ui/chart';
-import { useToast } from '@/hooks/use-toast';
-import { gameService } from '@/services/games';
+import { GameStatusDistribution } from '@/types/Dashboard';
 import { generateRandomColor } from '@/utils/GenerateRandomColor';
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router';
 import { Pie, PieChart } from 'recharts';
 import { chartConfig } from './ChartConfig';
 
@@ -25,56 +23,47 @@ interface GameDistributionFormated {
   fill: string;
 }
 
-export default function GameDistribuition() {
+interface GameDistribuitionProps {
+  gameDistributionList?: GameStatusDistribution[];
+}
+
+export default function GameDistribuition({
+  gameDistributionList,
+}: GameDistribuitionProps) {
   const [gameDistribution, setGameDistribution] =
     useState<GameDistributionFormated[]>();
-  const { id } = useParams();
-  const { toast } = useToast();
   const [resume, setResume] = useState<string>('');
 
   useEffect(() => {
-    if (!id) return;
+    if (!gameDistributionList) return;
+    const formattedResponse: GameDistributionFormated[] = Object.entries(
+      gameDistributionList
+    ).map(([, value]) => ({
+      title: value.status,
+      quantidade: value.count as number,
+      fill: generateRandomColor(),
+    }));
 
-    const getLastUpdatedGames = async () => {
-      try {
-        const response = await gameService.getGameDistribuitionByUserId(id);
-        const formattedResponse: GameDistributionFormated[] = Object.entries(
-          response
-        ).map(([key, value]) => ({
-          title: key,
-          quantidade: value as number,
-          fill: generateRandomColor(),
-        }));
+    setGameDistribution(formattedResponse);
 
-        setGameDistribution(formattedResponse);
+    const sortedGames = formattedResponse.sort(
+      (a, b) => b.quantidade - a.quantidade
+    );
 
-        const sortedGames = formattedResponse.sort(
-          (a, b) => b.quantidade - a.quantidade
-        );
+    const mostPlayed = sortedGames[0];
+    const leastPlayed = sortedGames[sortedGames.length - 1];
 
-        const mostPlayed = sortedGames[0];
-        const leastPlayed = sortedGames[sortedGames.length - 1];
+    let message = `Você possui muitos jogos na categoria: "${mostPlayed.title}". `;
+    if (mostPlayed.title === 'Pendente') {
+      message += 'Tente focar em completar mais jogos!';
+    } else if (leastPlayed.title === 'Completo') {
+      message += 'Parabéns por completar muitos jogos, mas continue assim!';
+    } else {
+      message += `Considere dar mais atenção a seus jogos que estão: "${leastPlayed.title}".`;
+    }
 
-        let message = `Você possui muitos jogos na categoria: "${mostPlayed.title}". `;
-        if (mostPlayed.title === 'Pendente') {
-          message += 'Tente focar em completar mais jogos!';
-        } else if (leastPlayed.title === 'Completo') {
-          message += 'Parabéns por completar muitos jogos, mas continue assim!';
-        } else {
-          message += `Considere dar mais atenção a seus jogos que estão: "${leastPlayed.title}".`;
-        }
-
-        setResume(message);
-      } catch (error) {
-        toast({
-          title: 'Erro',
-          description: String(error) || 'Erro ao buscar os jogos atualizados',
-          variant: 'destructive',
-        });
-      }
-    };
-    getLastUpdatedGames();
-  }, [id, setGameDistribution]);
+    setResume(message);
+  }, [gameDistributionList]);
   return (
     <div className="flex flex-col items-center gap-4 md:ml-8">
       <h1 className="dark:text-white font-bebas text-center text-sm sm:text-lg md:text-xl lg:text-2xl">
