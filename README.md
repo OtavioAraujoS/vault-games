@@ -1,6 +1,6 @@
 # Vault Games
 
-![Vault Games](https://avatars.githubusercontent.com/u/51797012?v=4)
+![Vault Games](https://raw.githubusercontent.com/otavioaraujo08/vault-games/refs/heads/main/public/vaultGames.ico)
 
 ## Sobre o Projeto
 
