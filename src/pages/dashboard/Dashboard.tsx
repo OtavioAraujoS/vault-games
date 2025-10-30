@@ -38,8 +38,8 @@ export const Dashboard = () => {
     handleGetDashboardInfos();
   }, []);
   return loginInfos ? (
-    <div className="flex flex-col gap-16 dark:text-white h-full min-h-screen p-12">
-      <div className="flex flex-wrap-reverse justify-center items-center gap-6 pb-4 lg:justify-between lg:gap-0">
+    <div className="flex flex-col gap-16 dark:text-white h-full min-h-screen p-14">
+      <div className="flex flex-wrap-reverse justify-center items-center gap-6 pt-6 lg:justify-between lg:gap-0">
         <div>
           <h1 className="font-bold font-bebas text-[2.5rem] text-center lg:text-left">
             Seja bem vindo(a), {loginInfos.name}
