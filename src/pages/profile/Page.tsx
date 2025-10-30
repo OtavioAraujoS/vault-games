@@ -12,49 +12,53 @@ import { CustomClassObject } from './components/CustomClass';
 import GameDistribuition from './components/GameDistribuition';
 import LastGamesUpdated from './components/LastGamesUpdated';
 import ProfileInfos from './components/ProfileInfos';
+import { LoginContext } from '@/context/LoginContext';
 
 export default function Profile() {
+  const { loginInfos } = LoginContext();
   const [userInfos, setUserInfos] = useState<UsersInfo>();
   const [gameDistribution, setGameDistribution] =
     useState<GameStatusDistribution[]>();
   const { id } = useParams();
   const { toast } = useToast();
 
+  const getUserInfos = async () => {
+    try {
+      const response = await userService.getUserById(id ?? '0', loginInfos.id);
+      setUserInfos(response);
+    } catch {
+      toast({
+        title: 'Erro ao buscar informações do usuário',
+        description: 'Tente novamente mais tarde',
+      });
+    }
+  };
+
+  const getGameDistribuitionByUserId = async () => {
+    try {
+      const response = await gameService.getGameDistribuitionByUserId(
+        id ?? '0'
+      );
+      setGameDistribution(
+        Object.entries(response).map(([key, value]) => ({
+          status: key as GameStatus,
+          count: value as number,
+        }))
+      );
+    } catch (error) {
+      toast({
+        title: 'Erro ao buscar informações dos jogos do usuário',
+        description: String(error) || 'Erro ao buscar os jogos atualizados',
+      });
+    }
+  };
+
   useEffect(() => {
     if (!id) return;
 
-    const getUserInfos = async () => {
-      try {
-        const response = await userService.getUserById(id);
-        setUserInfos(response);
-      } catch {
-        toast({
-          title: 'Erro ao buscar informações do usuário',
-          description: 'Tente novamente mais tarde',
-        });
-      }
-    };
-
-    const getGameDistribuitionByUserId = async () => {
-      try {
-        const response = await gameService.getGameDistribuitionByUserId(id);
-        setGameDistribution(
-          Object.entries(response).map(([key, value]) => ({
-            status: key as GameStatus,
-            count: value as number,
-          }))
-        );
-      } catch (error) {
-        toast({
-          title: 'Erro ao buscar informações dos jogos do usuário',
-          description: String(error) || 'Erro ao buscar os jogos atualizados',
-        });
-      }
-    };
     getUserInfos();
     getGameDistribuitionByUserId();
   }, [id]);
-  console.log(gameDistribution);
   return (
     <div className="flex flex-col h-full min-h-screen w-full p-12 gap-8">
       <h1 className="border-l-4 border-lime-600 p-3 text-2xl md:text-3xl lg:text-4xl dark:text-white tracking-wide font-bold font-bebas">
