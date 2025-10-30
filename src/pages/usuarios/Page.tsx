@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useState, useTransition } from 'react';
 import { Link, useNavigate } from 'react-router';
 import dayjs from 'dayjs';
 import { Pencil, Plus } from 'lucide-react';
@@ -8,9 +8,11 @@ import { LoginContext } from '@/context/LoginContext';
 import { useToast } from '@/hooks/use-toast';
 import { userService } from '@/services/user';
 import type { UsersInfo } from '@/types/User';
+import { LoadingComponent } from '@/components/LoadingComponent';
 
 export const Usuarios = () => {
   const [users, setUsers] = useState<UsersInfo[]>([]);
+  const [isPending, startTransition] = useTransition();
   const { loginInfos } = LoginContext();
   const { toast } = useToast();
   const navigate = useNavigate();
@@ -43,10 +45,17 @@ export const Usuarios = () => {
 
   useEffect(() => {
     const controller = new AbortController();
-    getSystemUsers();
+
+    startTransition(() => {
+      getSystemUsers();
+    });
 
     return () => controller.abort();
   }, [getSystemUsers]);
+
+  if (isPending && users.length === 0) {
+    return <LoadingComponent />;
+  }
 
   if (!users.length) {
     return (
@@ -70,7 +79,11 @@ export const Usuarios = () => {
         </Link>
       </div>
 
-      <div className="flex flex-wrap gap-4 justify-start">
+      <div
+        className={`flex flex-wrap gap-4 justify-start transition-opacity duration-300 ${
+          isPending ? 'opacity-60 pointer-events-none' : 'opacity-100'
+        }`}
+      >
         {users.map((user) => (
           <div
             key={user._id}
