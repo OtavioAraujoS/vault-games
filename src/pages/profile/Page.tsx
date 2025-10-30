@@ -60,8 +60,7 @@ export default function Profile() {
   useEffect(() => {
     if (!id) return;
     startTransition(() => {
-      getUserInfos();
-      getGameDistribuitionByUserId();
+      Promise.all([getUserInfos(), getGameDistribuitionByUserId()]);
     });
   }, [id]);
 
