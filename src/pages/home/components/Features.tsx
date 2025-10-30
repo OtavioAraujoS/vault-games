@@ -26,8 +26,8 @@ const feature = [
 
 export const Features = () => {
   return (
-    <div className="bg-black h-full min-h-[110vh] flex flex-col justify-center items-center px-4 gap-28 lg:p-0">
-      <div className="flex flex-col items-center gap-4 mt-8">
+    <div className="bg-black h-full min-h-[110vh] flex flex-col justify-center items-center px-4 py-16 gap-28 lg:p-0">
+      <div className="flex flex-col items-center gap-4">
         <h1 className="font-oswald text-white tracking-wider text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-center">
           Explore nossas ferramentas
         </h1>
