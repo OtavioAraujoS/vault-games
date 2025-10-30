@@ -18,7 +18,7 @@ export const UsersPlaying = ({ currentPlayingGames }: UserPlayingProps) => {
             src={user.game.image}
             alt={user.game.nome}
             loading="lazy"
-            className="w-fit max-h-80 rounded-lg shadow-lg"
+            className="w-fit max-w-[16rem] max-h-80 rounded-lg shadow-lg"
           />
         </div>
       ))}
