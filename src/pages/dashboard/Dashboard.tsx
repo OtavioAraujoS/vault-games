@@ -95,7 +95,7 @@ export const Dashboard = () => {
             <RankByHours gameStatusDistribution={dashboardInfos.gamesPerUser} />
           </div>
 
-          <div className="flex flex-col w-full">
+          <div className="flex flex-col gap-2 w-full">
             <h2 className="font-bold font-bebas text-[2rem] text-center lg:text-left">
               Usuários com mais jogos cadastrados
             </h2>
@@ -106,7 +106,7 @@ export const Dashboard = () => {
             />
           </div>
 
-          <div className="flex flex-col w-full">
+          <div className="flex flex-col gap-2 w-full">
             <h2 className="font-bold font-bebas text-[2rem] text-center lg:text-left">
               Usuários estão jogando
             </h2>
