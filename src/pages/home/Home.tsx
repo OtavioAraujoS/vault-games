@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router';
 import { Features } from './components/Features';
 import { Header } from './components/Header';
 import { Ideas } from './components/Ideas';
+import Footer from './components/Footer';
 
 export const Home = () => {
   const navigate = useNavigate();
@@ -69,10 +70,11 @@ export const Home = () => {
       <div ref={aboutRef}>
         <Features />
       </div>
-      <div
-        ref={contactRef}
-      >
+      <div ref={contactRef}>
         <Ideas />
+      </div>
+      <div ref={aboutRef}>
+        <Footer />
       </div>
     </div>
   );
