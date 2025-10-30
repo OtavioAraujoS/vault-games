@@ -38,7 +38,7 @@ export const Dashboard = () => {
     handleGetDashboardInfos();
   }, []);
   return loginInfos ? (
-    <div className="flex flex-col gap-8 dark:text-white h-full min-h-screen p-12">
+    <div className="flex flex-col gap-16 dark:text-white h-full min-h-screen p-12">
       <div className="flex flex-wrap-reverse justify-center items-center gap-6 pb-4 lg:justify-between lg:gap-0">
         <div>
           <h1 className="font-bold font-bebas text-[2.5rem] text-center lg:text-left">
@@ -64,7 +64,7 @@ export const Dashboard = () => {
         </div>
       </div>
 
-      <div className="flex flex-col text-center gap-6 w-full border-y-2 border-gray-300 dark:border-gray-700 py-6 lg:text-left">
+      <div className="flex flex-col text-center gap-6 w-full border-y-2 pb-16 border-gray-300 dark:border-gray-700 py-6 lg:text-left">
         <h2 className="font-bold font-bebas text-[2rem] text-center lg:text-left">
           Status dos Jogos Cadastrados no Sistema
         </h2>
