@@ -33,7 +33,7 @@ export const GamesColumns = () => {
         variant: 'destructive',
       });
     }
-  }
+  };
 
   const GamesColumns: ColumnDef<Game>[] = [
     {
@@ -46,8 +46,8 @@ export const GamesColumns = () => {
           <img
             src={row.original.image}
             alt="Poster"
-            className="w-fit max-w-[7.5rem] h-44"
-            loading='lazy'
+            className="w-fit max-w-[7rem] h-44"
+            loading="lazy"
           />
         );
       },
@@ -81,7 +81,9 @@ export const GamesColumns = () => {
     {
       accessorKey: 'Status',
       header: () => {
-        return <div className="flex justify-center dark:text-white">Status</div>;
+        return (
+          <div className="flex justify-center dark:text-white">Status</div>
+        );
       },
       cell: ({ row }) => {
         return (
@@ -94,7 +96,9 @@ export const GamesColumns = () => {
     {
       accessorKey: 'Editar',
       header: () => {
-        return <div className="flex justify-center dark:text-white">Editar</div>;
+        return (
+          <div className="flex justify-center dark:text-white">Editar</div>
+        );
       },
       cell: ({ row }) => {
         return (
@@ -146,4 +150,4 @@ export const GamesColumns = () => {
   ];
 
   return GamesColumns;
-}
+};
