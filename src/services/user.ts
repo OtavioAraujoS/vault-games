@@ -14,7 +14,7 @@ class UserService {
     userWhoRequested: string
   ): Promise<UsersInfo> => {
     const response = await this.api.get(`${defaultUrl}/user/${id}`, {
-      params: { userWhoRequested },
+      headers: { userwhorequest: userWhoRequested },
     });
     return response as UsersInfo;
   };
