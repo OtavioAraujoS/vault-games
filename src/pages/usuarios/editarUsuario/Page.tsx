@@ -7,8 +7,10 @@ import { Undo2 } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router';
 import { Form } from './compoents/Form';
+import { LoginContext } from '@/context/LoginContext';
 
 export const EditarUsuario = () => {
+  const { loginInfos } = LoginContext();
   const [userInfos, setUserInfos] = useState<UsersInfo>({
     _id: '',
     id: '',
@@ -26,7 +28,7 @@ export const EditarUsuario = () => {
       if (!id) {
         return;
       }
-      const response = await userService.getUserById(id);
+      const response = await userService.getUserById(id, loginInfos.id);
       setUserInfos(response);
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error: any) {
