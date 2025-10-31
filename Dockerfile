@@ -13,6 +13,8 @@ RUN npm install
 # Copie o restante dos arquivos do projeto
 COPY . .
 
+ARG VITE_API_URL="https://vault-games-api-1.onrender.com"
+
 # Compile o projeto
 RUN npm run build
 
