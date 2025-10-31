@@ -7,7 +7,10 @@ export const UsersPlaying = ({ currentPlayingGames }: UserPlayingProps) => {
   return (
     <div className="flex gap-4">
       {currentPlayingGames?.map((user) => (
-        <div className="relative">
+        <div
+          className="relative"
+          key={`${user?.game?.nome} - ${user?.userName}`}
+        >
           <img
             src={user.userImage}
             alt={user.userName}
