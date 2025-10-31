@@ -6,7 +6,9 @@
 app = 'vault-games'
 primary_region = 'iad'
 
-[build]
+[build.args]
+  VITE_API_URL="https://vault-games-api-1.onrender.com"
+
 
 [http_service]
   internal_port = 80
