@@ -80,5 +80,5 @@ export class ApiService {
   };
 }
 
-export const defaultUrl = 'https://vault-games-api-1.onrender.com';
+export const defaultUrl = import.meta.env.VITE_API_URL;
 export const api = new ApiService();
