@@ -80,7 +80,6 @@ export default function Profile() {
                 name={userInfos?.nome || ''}
                 picture={userInfos?.picture || ''}
                 userId={userInfos?._id || ''}
-                password={userInfos?.password || ''}
               />
 
               <Separator className="bg-lime-600 dark:bg-lime-600" />
