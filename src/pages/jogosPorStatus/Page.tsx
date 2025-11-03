@@ -24,6 +24,7 @@ import { gameService } from '@/services/games';
 import { GamesByStatus } from '@/types/Games';
 import { Loader2 } from 'lucide-react';
 import { LoadingComponent } from '@/components/LoadingComponent';
+import { SafeImage } from '@/components/SafeImage';
 
 export const JogosPorStatus = () => {
   const [isPending, startTransition] = useTransition();
@@ -104,7 +105,7 @@ export const JogosPorStatus = () => {
                             <Dialog key={game._id}>
                               <DialogTrigger>
                                 <div className="bg-zinc-100 dark:bg-[#212121] p-4 rounded-md shadow-md overflow-hidden h-full max-w-[18rem] cursor-pointer hover:scale-[1.02] transition-transform">
-                                  <img
+                                  <SafeImage
                                     src={game.image}
                                     alt={game.nome}
                                     className="w-fit h-fit object-cover rounded-md"
