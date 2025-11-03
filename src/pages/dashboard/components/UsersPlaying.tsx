@@ -1,4 +1,6 @@
+import { SafeImage } from '@/components/SafeImage';
 import { CurrentPlayingGames } from '@/types/Dashboard';
+import { ImageHandling } from '@/utils/ImageHandling';
 
 interface UserPlayingProps {
   currentPlayingGames?: CurrentPlayingGames[];
@@ -11,17 +13,18 @@ export const UsersPlaying = ({ currentPlayingGames }: UserPlayingProps) => {
           className="relative"
           key={`${user?.game?.nome} - ${user?.userName}`}
         >
-          <img
-            src={user.userImage}
-            alt={user.userName}
+          <SafeImage
+            src={user?.userImage}
+            alt={user?.userName}
             className="w-14 h-14 rounded-full shadow-lg absolute bottom-2 right-1 border-2 border-white"
             loading="lazy"
           />
-          <img
-            src={user.game.image}
-            alt={user.game.nome}
+
+          <SafeImage
+            src={ImageHandling(user?.game.image)}
+            alt={user?.game.nome}
+            className="w-fit max-w-[16rem] max-h-80 rounded-lg shadow-lg object-cover"
             loading="lazy"
-            className="w-fit max-w-[16rem] max-h-80 rounded-lg shadow-lg"
           />
         </div>
       ))}
