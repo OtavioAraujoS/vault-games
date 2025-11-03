@@ -5,6 +5,7 @@ import { UnlinkMessage } from '@/components/UnlinkMessage';
 import { useToast } from '@/hooks/use-toast';
 import { gameService } from '@/services/games';
 import { Game } from '@/types/Games';
+import { ImageHandling } from '@/utils/ImageHandling';
 import type { ColumnDef } from '@tanstack/react-table';
 import { Pencil, Trash } from 'lucide-react';
 import { useNavigate } from 'react-router';
@@ -42,12 +43,21 @@ export const GamesColumns = () => {
         return <div className="ml-9 dark:text-white">Poster</div>;
       },
       cell: ({ row }) => {
+        const handleError = (
+          e: React.SyntheticEvent<HTMLImageElement, Event>
+        ) => {
+          if (!e.currentTarget.src.endsWith('/kirby.jpg')) {
+            e.currentTarget.src = '/kirby.jpg';
+          }
+        };
+
         return (
           <img
-            src={row.original.image}
+            src={ImageHandling(row.original.image)}
             alt="Poster"
-            className="w-fit max-w-[7rem] h-44"
+            className="w-fit max-w-[7rem] h-44 object-cover rounded-md border border-neutral-800"
             loading="lazy"
+            onError={handleError}
           />
         );
       },
