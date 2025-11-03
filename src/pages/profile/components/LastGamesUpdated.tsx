@@ -1,3 +1,4 @@
+import { SafeImage } from '@/components/SafeImage';
 import { Card, CardContent } from '@/components/ui/card';
 import {
   Carousel,
@@ -66,7 +67,7 @@ export default function LastGamesUpdated() {
             <CarouselItem key={index}>
               <Card>
                 <CardContent className="flex flex-col gap-4 items-center justify-center p-6">
-                  <img
+                  <SafeImage
                     src={game.image}
                     alt={game.nome}
                     className="object-fit"
