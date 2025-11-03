@@ -5,6 +5,7 @@ import { Undo2 } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router';
 import { Form } from './components/Form';
+import { removeDuplicateGamesByName } from '@/utils/RemoveDuplicate';
 
 export const CadastrarJogos = () => {
   const [gamesList, setGamesList] = useState<Game[]>([]);
@@ -13,7 +14,9 @@ export const CadastrarJogos = () => {
   const getGames = async () => {
     try {
       const response = await gameService.getGames();
-      setGamesList(response);
+      
+      if(!response || response.length === 0) return setGamesList([]);
+      setGamesList(removeDuplicateGamesByName(response));
     } catch {
       toast({
         title: 'Erro ao buscar jogos',
@@ -40,7 +43,7 @@ export const CadastrarJogos = () => {
             </div>
             Retornar
           </Link>
-        </div>
+        </div> 
         <div className="flex w-full">
           <Form gameList={gamesList} />
         </div>
